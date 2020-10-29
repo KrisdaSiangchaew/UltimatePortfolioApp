@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3101B09F25482C8F005F2F2B /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3101B09E25482C8F005F2F2B /* EditItemView.swift */; };
 		3101B0A2254879C7005F2F2B /* ItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3101B0A1254879C7005F2F2B /* ItemRowView.swift */; };
+		3101B0A525490960005F2F2B /* Binding-OnChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3101B0A425490960005F2F2B /* Binding-OnChange.swift */; };
 		31054279254272F9008652CB /* UltimatePortfolioAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31054278254272F9008652CB /* UltimatePortfolioAppApp.swift */; };
 		3105427B254272F9008652CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105427A254272F9008652CB /* ContentView.swift */; };
 		3105427D254272FB008652CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3105427C254272FB008652CB /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		3101B09E25482C8F005F2F2B /* EditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = "<group>"; };
 		3101B0A1254879C7005F2F2B /* ItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowView.swift; sourceTree = "<group>"; };
+		3101B0A425490960005F2F2B /* Binding-OnChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding-OnChange.swift"; sourceTree = "<group>"; };
 		31054275254272F9008652CB /* UltimatePortfolioApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UltimatePortfolioApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31054278254272F9008652CB /* UltimatePortfolioAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UltimatePortfolioAppApp.swift; sourceTree = "<group>"; };
 		3105427A254272F9008652CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				31C72F0D25431FC700C5784B /* ProjectsView.swift */,
 				3101B0A1254879C7005F2F2B /* ItemRowView.swift */,
 				3101B09E25482C8F005F2F2B /* EditItemView.swift */,
+				3101B0A425490960005F2F2B /* Binding-OnChange.swift */,
 				3105428C254282C4008652CB /* DataController.swift */,
 				3105427C254272FB008652CB /* Assets.xcassets */,
 				310542882542801C008652CB /* Main.xcdatamodeld */,
@@ -182,6 +185,7 @@
 				3105428D254282C4008652CB /* DataController.swift in Sources */,
 				3101B0A2254879C7005F2F2B /* ItemRowView.swift in Sources */,
 				3105427B254272F9008652CB /* ContentView.swift in Sources */,
+				3101B0A525490960005F2F2B /* Binding-OnChange.swift in Sources */,
 				31C72F0B25431CDC00C5784B /* HomeView.swift in Sources */,
 				31054279254272F9008652CB /* UltimatePortfolioAppApp.swift in Sources */,
 				317C84DD2546F9A600FC118F /* Item-CoreDataHelpers.swift in Sources */,
