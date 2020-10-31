@@ -65,4 +65,8 @@ extension Project {
         
         return Double(completedItems.count) / Double(originalItems.count)
     }
+    
+    static let colors = [
+        "Dark Blue", "Dark Gray", "Gold", "Gray", "Green", "Light Blue", "Midnight", "Orange", "Pink", "Purple", "Red", "Teal"
+    ]
 }
