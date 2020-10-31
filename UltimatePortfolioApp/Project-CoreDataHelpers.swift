@@ -20,7 +20,7 @@ extension Project {
         color ?? "Light Blue"
     }
     
-    var example: Project {
+    static var example: Project {
         let controller = DataController(inMemory: true)
         let viewContext = controller.container.viewContext
         

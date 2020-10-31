@@ -19,6 +19,8 @@
 		316CA4472542BA3100C7AE62 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 316CA4462542BA3100C7AE62 /* CloudKit.framework */; };
 		317C84DD2546F9A600FC118F /* Item-CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317C84DC2546F9A600FC118F /* Item-CoreDataHelpers.swift */; };
 		317C84E12546FA7100FC118F /* Project-CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317C84E02546FA7100FC118F /* Project-CoreDataHelpers.swift */; };
+		318A928A254C08320054FDD7 /* ProjectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A9289254C08320054FDD7 /* ProjectHeaderView.swift */; };
+		318A928D254C118D0054FDD7 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 318A928C254C118D0054FDD7 /* Colors.xcassets */; };
 		31C72F0B25431CDC00C5784B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C72F0A25431CDC00C5784B /* HomeView.swift */; };
 		31C72F0E25431FC700C5784B /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C72F0D25431FC700C5784B /* ProjectsView.swift */; };
 /* End PBXBuildFile section */
@@ -39,6 +41,8 @@
 		316CA4462542BA3100C7AE62 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		317C84DC2546F9A600FC118F /* Item-CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item-CoreDataHelpers.swift"; sourceTree = "<group>"; };
 		317C84E02546FA7100FC118F /* Project-CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project-CoreDataHelpers.swift"; sourceTree = "<group>"; };
+		318A9289254C08320054FDD7 /* ProjectHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectHeaderView.swift; sourceTree = "<group>"; };
+		318A928C254C118D0054FDD7 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		31C72F0A25431CDC00C5784B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		31C72F0D25431FC700C5784B /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,10 +87,12 @@
 				31C72F0A25431CDC00C5784B /* HomeView.swift */,
 				31C72F0D25431FC700C5784B /* ProjectsView.swift */,
 				3101B0A1254879C7005F2F2B /* ItemRowView.swift */,
+				318A9289254C08320054FDD7 /* ProjectHeaderView.swift */,
 				3101B09E25482C8F005F2F2B /* EditItemView.swift */,
 				3101B0A425490960005F2F2B /* Binding-OnChange.swift */,
 				3105428C254282C4008652CB /* DataController.swift */,
 				3105427C254272FB008652CB /* Assets.xcassets */,
+				318A928C254C118D0054FDD7 /* Colors.xcassets */,
 				310542882542801C008652CB /* Main.xcdatamodeld */,
 				31054281254272FB008652CB /* Info.plist */,
 				3105427E254272FB008652CB /* Preview Content */,
@@ -167,6 +173,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				318A928D254C118D0054FDD7 /* Colors.xcassets in Resources */,
 				31054280254272FB008652CB /* Preview Assets.xcassets in Resources */,
 				3105427D254272FB008652CB /* Assets.xcassets in Resources */,
 			);
@@ -180,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31C72F0E25431FC700C5784B /* ProjectsView.swift in Sources */,
+				318A928A254C08320054FDD7 /* ProjectHeaderView.swift in Sources */,
 				3105428A2542801C008652CB /* Main.xcdatamodeld in Sources */,
 				317C84E12546FA7100FC118F /* Project-CoreDataHelpers.swift in Sources */,
 				3105428D254282C4008652CB /* DataController.swift in Sources */,
