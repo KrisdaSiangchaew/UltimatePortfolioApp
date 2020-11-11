@@ -11,7 +11,8 @@ struct ItemRowView: View {
     @ObservedObject var item: Item
     
     var body: some View {
-        NavigationLink(item.itemTitle, destination: EditItemView(item: item))    }
+        NavigationLink(item.itemTitle, destination: EditItemView(item: item))
+    }
 }
 
 struct ItemRowView_Previews: PreviewProvider {

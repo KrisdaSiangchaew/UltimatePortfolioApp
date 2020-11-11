@@ -34,9 +34,22 @@ extension Project {
     }
     
     var projectItems: [Item] {
-        let itemsArray = items?.allObjects as? [Item] ?? []
-        
-        return itemsArray.sorted {
+        items?.allObjects as? [Item] ?? []
+    }
+    
+    func projectItems(using sortOrder: Item.SortOrder) -> [Item] {
+        switch sortOrder {
+        case .creationDate:
+            return projectItems.sorted { $0.itemCreationDate < $1.itemCreationDate }
+        case .title:
+            return projectItems.sorted { $0.itemTitle < $1.itemTitle }
+        case .optimized:
+            return projectItemsDefaultSorted
+        }
+    }
+    
+    var projectItemsDefaultSorted: [Item] {
+        return projectItems.sorted {
             if $0.completed == false {
                 if $1.completed == true {
                     return true
