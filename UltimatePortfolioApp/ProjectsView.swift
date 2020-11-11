@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ProjectsView: View {
+    @Environment(\.managedObjectContext) var moc
+    @EnvironmentObject var dataController: DataController
+    
     let showClosedProjects: Bool
     let projects: FetchRequest<Project>
     
@@ -30,6 +33,41 @@ struct ProjectsView: View {
                 ForEach(projects.wrappedValue) { project in
                     Section(header: ProjectHeaderView(project: project)) {
                         ForEach(project.projectItems, content: ItemRowView.init)
+                            .onDelete { indexSet in
+                                let allItems = project.projectItems
+                                
+                                for index in indexSet {
+                                    let item = allItems[index]
+                                    dataController.delete(item)
+                                }
+                                dataController.save()
+                            }
+                        if showClosedProjects == false {
+                            Button {
+                                withAnimation {
+                                    let item = Item(context: moc)
+                                    item.project = project
+                                    item.creationDate = Date()
+                                    dataController.save()
+                                }
+                            } label: {
+                                Label("Add New Item", systemImage: "plus")
+                            }
+                        }
+                    }
+                }
+            }
+            .toolbar {
+                if showClosedProjects == false {
+                    Button {
+                        withAnimation {
+                            let project = Project(context: moc)
+                            project.closed = false
+                            project.creationDate = Date()
+                            dataController.save()
+                        }
+                    } label: {
+                        Label("Add Project", systemImage: "plus")
                     }
                 }
             }
