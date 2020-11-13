@@ -27,45 +27,48 @@ struct ProjectsView: View {
             entity: Project.entity(),
             sortDescriptors: [NSSortDescriptor(keyPath: \Project.creationDate, ascending: false)],
             predicate: NSPredicate(format: "closed = %d", showClosedProjects))
-        
     }
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(projects.wrappedValue) { project in
-                    Section(header: ProjectHeaderView(project: project)) {
-                        ForEach(project.projectItems(using: sortOrder), content: ItemRowView.init)
-                            .onDelete { indexSet in
-                                let allItems = project.projectItems
-                                
-                                for index in indexSet {
-                                    let item = allItems[index]
-                                    dataController.delete(item)
+            Group {
+                if projects.wrappedValue.count == 0 {
+                    Text("There's nothing here right now.")
+                        .foregroundColor(.secondary)
+                } else {
+                    List {
+                        ForEach(projects.wrappedValue) { project in
+                            Section(header: ProjectHeaderView(project: project)) {
+                                ForEach(project.projectItems(using: sortOrder)) { item in
+                                    ItemRowView(project: project, item: item)
                                 }
-                                dataController.save()
-                            }
-                        if showClosedProjects == false {
-                            Button {
-                                withAnimation {
-                                    let item = Item(context: moc)
-                                    item.project = project
-                                    item.creationDate = Date()
+                                .onDelete { indexSet in
+                                    let allItems = project.projectItems(using: sortOrder)
+                                    
+                                    for index in indexSet {
+                                        let item = allItems[index]
+                                        dataController.delete(item)
+                                    }
                                     dataController.save()
                                 }
-                            } label: {
-                                Label("Add New Item", systemImage: "plus")
+                                
+                                if showClosedProjects == false {
+                                    Button {
+                                        withAnimation {
+                                            let item = Item(context: moc)
+                                            item.project = project
+                                            item.creationDate = Date()
+                                            dataController.save()
+                                        }
+                                    } label: {
+                                        Label("Add New Item", systemImage: "plus")
+                                    }
+                                }
                             }
                         }
                     }
+                    .listStyle(InsetGroupedListStyle())
                 }
-            }
-            .actionSheet(isPresented: $showingSortOrder) {
-                ActionSheet(title: Text("Sort items"), message: nil, buttons: [
-                    .default(Text("Optimized"), action: { sortOrder = .optimized}),
-                    .default(Text("Creation Date"), action: { sortOrder = .creationDate}),
-                    .default(Text("Title"), action: { sortOrder = .title})
-                ])
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -91,8 +94,16 @@ struct ProjectsView: View {
                     }
                 }
             }
-            .listStyle(InsetGroupedListStyle())
             .navigationTitle(showClosedProjects ? "Closed Projects" : "Open Projects")
+            .actionSheet(isPresented: $showingSortOrder) {
+                ActionSheet(title: Text("Sort items"), message: nil, buttons: [
+                    .default(Text("Optimized"), action: { sortOrder = .optimized}),
+                    .default(Text("Creation Date"), action: { sortOrder = .creationDate}),
+                    .default(Text("Title"), action: { sortOrder = .title})
+                ])
+            }
+            
+            SelectSomethingView()
         }
     }
 }
