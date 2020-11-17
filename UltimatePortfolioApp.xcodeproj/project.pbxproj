@@ -16,6 +16,9 @@
 		31054280254272FB008652CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3105427F254272FB008652CB /* Preview Assets.xcassets */; };
 		3105428A2542801C008652CB /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 310542882542801C008652CB /* Main.xcdatamodeld */; };
 		3105428D254282C4008652CB /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105428C254282C4008652CB /* DataController.swift */; };
+		3152F631256404AA00615A9D /* Awards.json in Resources */ = {isa = PBXBuildFile; fileRef = 3152F630256404AA00615A9D /* Awards.json */; };
+		3152F635256404E200615A9D /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152F634256404E200615A9D /* Award.swift */; };
+		3152F638256405A200615A9D /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152F637256405A200615A9D /* AwardsView.swift */; };
 		316CA4472542BA3100C7AE62 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 316CA4462542BA3100C7AE62 /* CloudKit.framework */; };
 		317C84DD2546F9A600FC118F /* Item-CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317C84DC2546F9A600FC118F /* Item-CoreDataHelpers.swift */; };
 		317C84E12546FA7100FC118F /* Project-CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317C84E02546FA7100FC118F /* Project-CoreDataHelpers.swift */; };
@@ -24,6 +27,7 @@
 		318A9290254D3D9B0054FDD7 /* EditProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A928F254D3D9B0054FDD7 /* EditProjectView.swift */; };
 		31C72F0B25431CDC00C5784B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C72F0A25431CDC00C5784B /* HomeView.swift */; };
 		31C72F0E25431FC700C5784B /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C72F0D25431FC700C5784B /* ProjectsView.swift */; };
+		31E6AD6D25601ABC00BCC524 /* Bundle-Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6AD6C25601ABC00BCC524 /* Bundle-Decode.swift */; };
 		31EBFC4D255C3D11002E7B54 /* Sequence-Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EBFC4C255C3D11002E7B54 /* Sequence-Sorting.swift */; };
 		31EBFC51255C452B002E7B54 /* SelectSomethingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EBFC50255C452B002E7B54 /* SelectSomethingView.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +44,9 @@
 		31054281254272FB008652CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		310542892542801C008652CB /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
 		3105428C254282C4008652CB /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		3152F630256404AA00615A9D /* Awards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Awards.json; sourceTree = "<group>"; };
+		3152F634256404E200615A9D /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
+		3152F637256405A200615A9D /* AwardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsView.swift; sourceTree = "<group>"; };
 		316CA4442542BA1400C7AE62 /* UltimatePortfolioApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UltimatePortfolioApp.entitlements; sourceTree = "<group>"; };
 		316CA4462542BA3100C7AE62 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		317C84DC2546F9A600FC118F /* Item-CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item-CoreDataHelpers.swift"; sourceTree = "<group>"; };
@@ -49,6 +56,7 @@
 		318A928F254D3D9B0054FDD7 /* EditProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectView.swift; sourceTree = "<group>"; };
 		31C72F0A25431CDC00C5784B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		31C72F0D25431FC700C5784B /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
+		31E6AD6C25601ABC00BCC524 /* Bundle-Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decode.swift"; sourceTree = "<group>"; };
 		31EBFC4C255C3D11002E7B54 /* Sequence-Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence-Sorting.swift"; sourceTree = "<group>"; };
 		31EBFC50255C452B002E7B54 /* SelectSomethingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSomethingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,7 +94,11 @@
 			isa = PBXGroup;
 			children = (
 				3105427C254272FB008652CB /* Assets.xcassets */,
+				3152F630256404AA00615A9D /* Awards.json */,
+				3152F637256405A200615A9D /* AwardsView.swift */,
+				3152F634256404E200615A9D /* Award.swift */,
 				3101B0A425490960005F2F2B /* Binding-OnChange.swift */,
+				31E6AD6C25601ABC00BCC524 /* Bundle-Decode.swift */,
 				318A928C254C118D0054FDD7 /* Colors.xcassets */,
 				3105427A254272F9008652CB /* ContentView.swift */,
 				3105428C254282C4008652CB /* DataController.swift */,
@@ -183,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				318A928D254C118D0054FDD7 /* Colors.xcassets in Resources */,
+				3152F631256404AA00615A9D /* Awards.json in Resources */,
 				31054280254272FB008652CB /* Preview Assets.xcassets in Resources */,
 				3105427D254272FB008652CB /* Assets.xcassets in Resources */,
 			);
@@ -197,13 +210,16 @@
 			files = (
 				31C72F0E25431FC700C5784B /* ProjectsView.swift in Sources */,
 				318A928A254C08320054FDD7 /* ProjectHeaderView.swift in Sources */,
+				3152F638256405A200615A9D /* AwardsView.swift in Sources */,
 				3105428A2542801C008652CB /* Main.xcdatamodeld in Sources */,
 				317C84E12546FA7100FC118F /* Project-CoreDataHelpers.swift in Sources */,
 				318A9290254D3D9B0054FDD7 /* EditProjectView.swift in Sources */,
 				3105428D254282C4008652CB /* DataController.swift in Sources */,
 				31EBFC51255C452B002E7B54 /* SelectSomethingView.swift in Sources */,
+				3152F635256404E200615A9D /* Award.swift in Sources */,
 				3101B0A2254879C7005F2F2B /* ItemRowView.swift in Sources */,
 				3105427B254272F9008652CB /* ContentView.swift in Sources */,
+				31E6AD6D25601ABC00BCC524 /* Bundle-Decode.swift in Sources */,
 				3101B0A525490960005F2F2B /* Binding-OnChange.swift in Sources */,
 				31EBFC4D255C3D11002E7B54 /* Sequence-Sorting.swift in Sources */,
 				31C72F0B25431CDC00C5784B /* HomeView.swift in Sources */,
