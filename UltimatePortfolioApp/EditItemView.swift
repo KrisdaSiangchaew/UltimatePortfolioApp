@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct EditItemView: View {
-    let item: Item
     @EnvironmentObject var dataController: DataController
+
+    let item: Item
     
     @State private var title: String
     @State private var detail: String
