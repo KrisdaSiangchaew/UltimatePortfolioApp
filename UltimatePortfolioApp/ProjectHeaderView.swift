@@ -25,6 +25,7 @@ struct ProjectHeaderView: View {
                     .imageScale(.large)
             }
         }
+        .accessibilityElement(children: .combine)
         .padding(.bottom, 10)
     }
 }
