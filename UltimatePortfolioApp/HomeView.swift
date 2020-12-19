@@ -38,37 +38,6 @@ struct HomeView: View {
         GridItem(.fixed(100))
     ]
     
-    @ViewBuilder
-    func list(_ title: LocalizedStringKey, for items: FetchedResults<Item>.SubSequence) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(title)
-                .font(.headline)
-                .foregroundColor(.secondary)
-            ForEach(items) { item in
-                NavigationLink(destination: EditItemView(item: item)) {
-                    HStack {
-                        Circle()
-                            .stroke(Color(item.project?.projectColor ?? "Light Blue"), lineWidth: 3)
-                            .frame(width: 44, height: 44)
-                            .padding()
-                        VStack(alignment: .leading) {
-                            Text(item.itemTitle)
-                                .font(.title2)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            if !item.itemDetail.isEmpty {
-                                Text(item.itemDetail)
-                                    .foregroundColor(.secondary)
-                            }
-                        }
-                    }
-                    .background(Color.secondarySystemGroupedBackground)
-                    .cornerRadius(10)
-                    .shadow(color: Color.black.opacity(0.2), radius: 5)
-                }
-            }
-        }
-    }
-    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -77,31 +46,15 @@ struct HomeView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHGrid(rows: rows, spacing: 16) {
                             ForEach(projects) { project in
-                                VStack(alignment: .leading) {
-                                    Text("\(project.projectItems.count) items")
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                    Text(project.projectTitle)
-                                        .font(.title2)
-                                    ProgressView(value: project.completionAmount)
-                                        .accentColor(Color(project.projectColor))
-                                }
-                                .padding()
-                                .background(Color.secondarySystemGroupedBackground)
-                                .cornerRadius(10)
-                                .shadow(color: Color.black.opacity(0.2), radius: 5)
-                                .accessibilityElement(children: .ignore)
-                                .accessibilityLabel("\(project.projectTitle), \(project.projectItems.count) items, \(project.completionAmount * 100, specifier: "%g")% complete.")
+                                ProjectSummaryView(project: project)
                             }
                         }
                         .padding([.horizontal, .top])
                         .fixedSize(horizontal: false, vertical: true)
                     }
-                    // Up next (3 items)
                     VStack(alignment: .leading, spacing: 30) {
-                        list("Up next", for: items.wrappedValue.prefix(3))
-                        // More to explore items
-                        list("More to explore", for: items.wrappedValue.dropFirst(3))
+                        ItemListView(title: "Up next", items: items.wrappedValue.prefix(3))
+                        ItemListView(title: "More to explore", items: items.wrappedValue.dropFirst(3))
                     }
                     .padding(.horizontal)
                 }

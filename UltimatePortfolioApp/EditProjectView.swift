@@ -31,6 +31,27 @@ struct EditProjectView: View {
     
     let colorColumns = GridItem(.adaptive(minimum: 44))
     
+    fileprivate func colorButton(_ item: String) -> some View {
+        return ZStack {
+            Color(item)
+                .aspectRatio(1, contentMode: .fit)
+                .cornerRadius(6)
+            
+            if color == item {
+                Image(systemName: "checkmark.circle")
+                    .foregroundColor(.white)
+                    .font(.largeTitle)
+            }
+        }
+        .onTapGesture {
+            color = item
+            update()
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityAddTraits(item == color ? [.isButton, .isSelected] : .isButton)
+        .accessibilityLabel(LocalizedStringKey(item))
+    }
+    
     var body: some View {
         Form {
             Section(header: Text("Basic settings")) {
@@ -40,26 +61,7 @@ struct EditProjectView: View {
             
             Section(header: Text("Custom project color")) {
                 LazyVGrid(columns: [colorColumns]) {
-                    ForEach(Project.colors, id: \.self) { item in
-                        ZStack {
-                            Color(item)
-                                .aspectRatio(1, contentMode: .fit)
-                                .cornerRadius(6)
-                            
-                            if color == item {
-                                Image(systemName: "checkmark.circle")
-                                    .foregroundColor(.white)
-                                    .font(.largeTitle)
-                            }
-                        }
-                        .onTapGesture {
-                            color = item
-                            update()
-                        }
-                        .accessibilityElement(children: .ignore)
-                        .accessibilityAddTraits(item == color ? [.isButton, .isSelected] : .isButton)
-                        .accessibilityLabel(LocalizedStringKey(item))
-                    }
+                    ForEach(Project.colors, id: \.self, content: colorButton)
                 }
                 .padding(.vertical)
             }

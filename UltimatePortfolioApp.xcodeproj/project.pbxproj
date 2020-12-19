@@ -33,6 +33,8 @@
 		31E6AD6D25601ABC00BCC524 /* Bundle-Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6AD6C25601ABC00BCC524 /* Bundle-Decode.swift */; };
 		31EBFC4D255C3D11002E7B54 /* Sequence-Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EBFC4C255C3D11002E7B54 /* Sequence-Sorting.swift */; };
 		31EBFC51255C452B002E7B54 /* SelectSomethingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EBFC50255C452B002E7B54 /* SelectSomethingView.swift */; };
+		31ED5324258E537000969993 /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ED5323258E537000969993 /* ItemListView.swift */; };
+		31ED5327258E553800969993 /* ProjectSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ED5326258E553800969993 /* ProjectSummaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		31E6AD6C25601ABC00BCC524 /* Bundle-Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decode.swift"; sourceTree = "<group>"; };
 		31EBFC4C255C3D11002E7B54 /* Sequence-Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence-Sorting.swift"; sourceTree = "<group>"; };
 		31EBFC50255C452B002E7B54 /* SelectSomethingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSomethingView.swift; sourceTree = "<group>"; };
+		31ED5323258E537000969993 /* ItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
+		31ED5326258E553800969993 /* ProjectSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSummaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,8 @@
 				31916A8C2582480C003816AB /* Localizable.strings */,
 				31916A9325825650003816AB /* Localizable.stringsdict */,
 				31C72F0A25431CDC00C5784B /* HomeView.swift */,
+				31ED5326258E553800969993 /* ProjectSummaryView.swift */,
+				31ED5323258E537000969993 /* ItemListView.swift */,
 				31054281254272FB008652CB /* Info.plist */,
 				3101B0A1254879C7005F2F2B /* ItemRowView.swift */,
 				310542882542801C008652CB /* Main.xcdatamodeld */,
@@ -224,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31C72F0E25431FC700C5784B /* ProjectsView.swift in Sources */,
+				31ED5327258E553800969993 /* ProjectSummaryView.swift in Sources */,
 				318A928A254C08320054FDD7 /* ProjectHeaderView.swift in Sources */,
 				3152F638256405A200615A9D /* AwardsView.swift in Sources */,
 				3105428A2542801C008652CB /* Main.xcdatamodeld in Sources */,
@@ -238,6 +245,7 @@
 				31E6AD6D25601ABC00BCC524 /* Bundle-Decode.swift in Sources */,
 				3101B0A525490960005F2F2B /* Binding-OnChange.swift in Sources */,
 				31EBFC4D255C3D11002E7B54 /* Sequence-Sorting.swift in Sources */,
+				31ED5324258E537000969993 /* ItemListView.swift in Sources */,
 				31C72F0B25431CDC00C5784B /* HomeView.swift in Sources */,
 				31054279254272F9008652CB /* UltimatePortfolioAppApp.swift in Sources */,
 				317C84DD2546F9A600FC118F /* Item-CoreDataHelpers.swift in Sources */,
