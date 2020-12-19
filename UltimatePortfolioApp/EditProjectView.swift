@@ -61,7 +61,7 @@ struct EditProjectView: View {
                 .padding(.vertical)
             }
             
-            Section(footer: Text("")) {
+            Section(footer: Text("Close this project will move this project to Closed tab. Delete the project will delete the project from memory.")) {
                 Button(project.closed ? "Reopen this project" : "Close this project") {
                     project.closed.toggle()
                     update()
@@ -76,7 +76,7 @@ struct EditProjectView: View {
         .onDisappear(perform: dataController.save)
         .alert(isPresented: $showDeleteConfirm, content: {
             Alert(title: Text("Delete project?"),
-                  message: Text("Are you sure you want to this project? It will also delete all items it contains."),
+                  message: Text("Are you sure you want to delete this project? It will also delete all items it contains."),
                   primaryButton: .default(Text("Delete"), action: delete),
                   secondaryButton: .cancel())
         })

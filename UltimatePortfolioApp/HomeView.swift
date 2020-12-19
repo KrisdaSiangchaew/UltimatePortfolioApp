@@ -39,7 +39,7 @@ struct HomeView: View {
     ]
     
     @ViewBuilder
-    func list(_ title: String, for items: FetchedResults<Item>.SubSequence) -> some View {
+    func list(_ title: LocalizedStringKey, for items: FetchedResults<Item>.SubSequence) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(title)
                 .font(.headline)
