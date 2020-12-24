@@ -25,11 +25,13 @@ struct HomeView: View {
 
     init() {
         let sortDescriptors = [NSSortDescriptor(keyPath: \Item.priority, ascending: false)]
-        let predicate = NSPredicate(format: "completed = false")
+        let completedPredicate = NSPredicate(format: "completed = false")
+        let openPredicate = NSPredicate(format: "project.closed = false")
+        let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [completedPredicate, openPredicate])
         
         let fetchRequest = NSFetchRequest<Item>(entityName: "Item")
         fetchRequest.sortDescriptors = sortDescriptors
-        fetchRequest.predicate = predicate
+        fetchRequest.predicate = compoundPredicate
         
         items = FetchRequest(fetchRequest: fetchRequest)
     }
