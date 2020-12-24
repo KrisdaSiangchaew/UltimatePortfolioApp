@@ -21,9 +21,9 @@ struct ProjectHeaderView: View {
             Spacer()
             
             NavigationLink(destination: EditProjectView(project: project)) {
-                Image(systemName: "square.and.pencil")
-                    .imageScale(.large)
-            }
+                    Image(systemName: "square.and.pencil")
+                        .imageScale(.large)
+                }
         }
         .accessibilityElement(children: .combine)
         .padding(.bottom, 10)
