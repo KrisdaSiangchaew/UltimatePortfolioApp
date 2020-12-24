@@ -45,7 +45,7 @@ struct EditProjectView: View {
         }
         .onTapGesture {
             color = item
-            update()
+            // update() // bug fix needed before we can use .onChange
         }
         .accessibilityElement(children: .ignore)
         .accessibilityAddTraits(item == color ? [.isButton, .isSelected] : .isButton)
@@ -55,8 +55,8 @@ struct EditProjectView: View {
     var body: some View {
         Form {
             Section(header: Text("Basic settings")) {
-                TextField("Title", text: $title.onChange(update))
-                TextField("Description", text: $detail.onChange(update))
+                TextField("Title", text: $title) // bug fix needed before we can use .onChange
+                TextField("Description", text: $detail) // bug fix needed before we can use .onChange
             }
 
             Section(header: Text("Custom project color")) {
@@ -79,7 +79,7 @@ struct EditProjectView: View {
             }
         }
         .navigationTitle("Edit Project")
-        .onDisappear(perform: dataController.save)
+        .onDisappear(perform: update)
         .alert(isPresented: $showDeleteConfirm, content: {
             Alert(title: Text("Delete project?"),
                   // swiftlint:disable:next line_length
@@ -90,6 +90,7 @@ struct EditProjectView: View {
     }
 
     func update() {
+        dataController.save()
         project.title = title
         project.detail = detail
         project.color = color
