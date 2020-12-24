@@ -12,31 +12,31 @@ struct EditProjectView: View {
     @Environment(\.presentationMode) var presentationMode
 
     let project: Project
-        
+
     @State private var title: String
     @State private var detail: String
     @State private var color: String
     @State private var closed: Bool
 
     @State private var showDeleteConfirm = false
-    
+
     init(project: Project) {
         self.project = project
-        
+
         _title = State(wrappedValue: project.projectTitle)
         _detail = State(wrappedValue: project.projectDetail)
         _color = State(wrappedValue: project.projectColor)
         _closed = State(wrappedValue: project.closed)
     }
-    
+
     let colorColumns = GridItem(.adaptive(minimum: 44))
-    
+
     fileprivate func colorButton(_ item: String) -> some View {
         return ZStack {
             Color(item)
                 .aspectRatio(1, contentMode: .fit)
                 .cornerRadius(6)
-            
+
             if color == item {
                 Image(systemName: "checkmark.circle")
                     .foregroundColor(.white)
@@ -51,21 +51,22 @@ struct EditProjectView: View {
         .accessibilityAddTraits(item == color ? [.isButton, .isSelected] : .isButton)
         .accessibilityLabel(LocalizedStringKey(item))
     }
-    
+
     var body: some View {
         Form {
             Section(header: Text("Basic settings")) {
                 TextField("Title", text: $title.onChange(update))
                 TextField("Description", text: $detail.onChange(update))
             }
-            
+
             Section(header: Text("Custom project color")) {
                 LazyVGrid(columns: [colorColumns]) {
                     ForEach(Project.colors, id: \.self, content: colorButton)
                 }
                 .padding(.vertical)
             }
-            
+
+            // swiftlint:disable:next line_length
             Section(footer: Text("Close this project will move this project to Closed tab. Delete the project will delete the project from memory.")) {
                 Button(project.closed ? "Reopen this project" : "Close this project") {
                     project.closed.toggle()
@@ -81,18 +82,19 @@ struct EditProjectView: View {
         .onDisappear(perform: dataController.save)
         .alert(isPresented: $showDeleteConfirm, content: {
             Alert(title: Text("Delete project?"),
+                  // swiftlint:disable:next line_length
                   message: Text("Are you sure you want to delete this project? It will also delete all items it contains."),
                   primaryButton: .default(Text("Delete"), action: delete),
                   secondaryButton: .cancel())
         })
     }
-    
+
     func update() {
         project.title = title
         project.detail = detail
         project.color = color
     }
-    
+
     func delete() {
         dataController.delete(project)
         presentationMode.wrappedValue.dismiss()

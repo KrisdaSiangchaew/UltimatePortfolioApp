@@ -10,7 +10,7 @@ import CoreData
 
 struct HomeView: View {
     @EnvironmentObject var dataController: DataController
-    
+
     @FetchRequest<Project>(
         entity: Project.entity(),
         sortDescriptors: [
@@ -18,9 +18,9 @@ struct HomeView: View {
         ],
         predicate: NSPredicate(format: "closed = false"))
     var projects: FetchedResults<Project>
-    
+
     let items: FetchRequest<Item>
-    
+
     static let tag: String? = "Home"
 
     init() {
@@ -28,18 +28,18 @@ struct HomeView: View {
         let completedPredicate = NSPredicate(format: "completed = false")
         let openPredicate = NSPredicate(format: "project.closed = false")
         let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [completedPredicate, openPredicate])
-        
+
         let fetchRequest = NSFetchRequest<Item>(entityName: "Item")
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.predicate = compoundPredicate
-        
+
         items = FetchRequest(fetchRequest: fetchRequest)
     }
-    
+
     var rows: [GridItem] = [
         GridItem(.fixed(100))
     ]
-    
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -75,7 +75,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static let dataController = DataController.preview
-    
+
     static var previews: some View {
         HomeView()
             .environmentObject(dataController)

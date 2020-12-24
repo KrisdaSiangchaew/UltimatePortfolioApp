@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProjectSummaryView: View {
     @ObservedObject var project: Project
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             Text("\(project.projectItems.count) items")
@@ -31,7 +31,7 @@ struct ProjectSummaryView: View {
 
 struct ProjectSummaryView_Previews: PreviewProvider {
     static let project = Project.example
-    
+
     static var previews: some View {
         ProjectSummaryView(project: project)
     }

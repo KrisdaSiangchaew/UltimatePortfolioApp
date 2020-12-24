@@ -10,18 +10,18 @@ import SwiftUI
 struct ProjectsView: View {
     let showClosedProjects: Bool
     var projects: FetchRequest<Project>
-    
+
     init(showClosedProjects: Bool) {
         self.showClosedProjects = showClosedProjects
-        
+
         self.projects = FetchRequest(
             entity: Project.entity(),
             sortDescriptors: [NSSortDescriptor(keyPath: \Project.creationDate, ascending: false)],
             predicate: NSPredicate(format: "closed = %d", showClosedProjects)
         )
-        
+
     }
-    
+
     var body: some View {
         NavigationView {
             List {

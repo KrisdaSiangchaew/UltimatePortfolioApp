@@ -10,7 +10,7 @@ import SwiftUI
 struct ItemListView: View {
     let title: LocalizedStringKey
     let items: FetchedResults<Item>.SubSequence
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(title)
@@ -41,8 +41,8 @@ struct ItemListView: View {
         }    }
 }
 
-//struct ItemListView_Previews: PreviewProvider {
+// struct ItemListView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ItemListView()
 //    }
-//}
+// }

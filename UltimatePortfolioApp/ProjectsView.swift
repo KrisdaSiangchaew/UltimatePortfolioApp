@@ -10,25 +10,25 @@ import SwiftUI
 struct ProjectsView: View {
     @Environment(\.managedObjectContext) var moc
     @EnvironmentObject var dataController: DataController
-    
+
     @State private var showingSortOrder = false
     @State private var sortOrder = Item.SortOrder.optimized
-    
+
     let showClosedProjects: Bool
     let projects: FetchRequest<Project>
-    
+
     static let openTag: String? = "Open"
     static let closedTag: String? = "Close"
-    
+
     init(showClosedProjects: Bool) {
         self.showClosedProjects = showClosedProjects
-        
+
         self.projects = FetchRequest<Project>(
             entity: Project.entity(),
             sortDescriptors: [NSSortDescriptor(keyPath: \Project.creationDate, ascending: false)],
             predicate: NSPredicate(format: "closed = %d", showClosedProjects))
     }
-    
+
     var projectList: some View {
         List {
             ForEach(projects.wrappedValue) { project in
@@ -39,7 +39,7 @@ struct ProjectsView: View {
                     .onDelete { indexSet in
                         delete(indexSet, from: project)
                     }
-                    
+
                     if showClosedProjects == false {
                         Button {
                             addItem(to: project)
@@ -52,7 +52,7 @@ struct ProjectsView: View {
         }
         .listStyle(InsetGroupedListStyle())
     }
-    
+
     var addProjectToolbarItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             if showClosedProjects == false {
@@ -66,7 +66,7 @@ struct ProjectsView: View {
             }
         }
     }
-    
+
     var sortToolbarItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             Button {
@@ -76,7 +76,7 @@ struct ProjectsView: View {
             }
         }
     }
-    
+
     fileprivate func addItem(to project: Project) {
         withAnimation {
             let item = Item(context: moc)
@@ -85,17 +85,17 @@ struct ProjectsView: View {
             dataController.save()
         }
     }
-    
+
     fileprivate func delete(_ indexSet: IndexSet, from project: Project) {
         let allItems = project.projectItems(using: sortOrder)
-        
+
         for index in indexSet {
             let item = allItems[index]
             dataController.delete(item)
         }
         dataController.save()
     }
-    
+
     fileprivate func addProject() {
         withAnimation {
             let project = Project(context: moc)
@@ -104,7 +104,7 @@ struct ProjectsView: View {
             dataController.save()
         }
     }
-    
+
     var body: some View {
         NavigationView {
             Group {
@@ -127,7 +127,7 @@ struct ProjectsView: View {
                     .default(Text("Title"), action: { sortOrder = .title})
                 ])
             }
-            
+
             SelectSomethingView()
         }
     }
