@@ -8,7 +8,10 @@
 import CoreData
 import SwiftUI
 
+/// An environment singleton to manage our Core Data stack, including handling saving, counting fetch requests,
+/// tracking awards, and dealing with sample data.
 class DataController: ObservableObject {
+    /// The lone CloudKit container used to store all our data.
     let container: NSPersistentCloudKitContainer
 
     static var preview: DataController = {
@@ -22,6 +25,11 @@ class DataController: ObservableObject {
         return controller
     }()
 
+    /// Initializes a data controller either in memory (for temporary use such as testing and previewing.
+    ///  or on permanent storage (for use in regular app runs.)
+    ///
+    /// Defaults to permanent storage.
+    /// - Parameter inMemory: Where to store this data in temporary memory or not.
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "Main")
 
@@ -36,6 +44,9 @@ class DataController: ObservableObject {
         }
     }
 
+    
+    /// Creates example projects and items to make manual testing easier.
+    /// - Throws: An NSError sent from calling save() on the NSManagedObjectContext.
     func createSampleData() throws {
         let viewContext = container.viewContext
 
@@ -68,6 +79,10 @@ class DataController: ObservableObject {
         _ = try? container.viewContext.execute(batchDeleteFetchRequest2)
     }
 
+    
+    /// Saves our Core Data context iff there are changes. This silently ignores
+    /// any errors caused by saving, but this should be fine because our
+    /// attributes are optional.
     func save() {
         if container.viewContext.hasChanges {
             try? container.viewContext.save()

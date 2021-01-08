@@ -45,7 +45,7 @@ struct EditProjectView: View {
         }
         .onTapGesture {
             color = item
-            // update() // bug fix needed before we can use .onChange
+            // update()
         }
         .accessibilityElement(children: .ignore)
         .accessibilityAddTraits(item == color ? [.isButton, .isSelected] : .isButton)
@@ -55,8 +55,8 @@ struct EditProjectView: View {
     var body: some View {
         Form {
             Section(header: Text("Basic settings")) {
-                TextField("Title", text: $title) // bug fix needed before we can use .onChange
-                TextField("Description", text: $detail) // bug fix needed before we can use .onChange
+                TextField("Title", text: $title) // .onChange(update))
+                TextField("Description", text: $detail) // .onChange(update))
             }
 
             Section(header: Text("Custom project color")) {
@@ -89,6 +89,12 @@ struct EditProjectView: View {
         })
     }
 
+    // Specifics: In iOS 14.3 calling update() here will cause the view to immediately switch back
+    // to the parent view to get updated.
+    // Solution: We do all the updaets thru State properties and only call update() from .onDisapper(perform:).
+    // Side effect: The sideeffect when we moved back to the parent view, we will see the property being updated.
+    // Reference: See the EditItemView where we update our State properties and thru Binding call update()
+    // and it doesn't pop back to parent view using Binding directly to call update().
     func update() {
         dataController.save()
         project.title = title
