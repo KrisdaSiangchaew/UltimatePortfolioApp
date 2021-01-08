@@ -13,7 +13,6 @@
 		31054279254272F9008652CB /* UltimatePortfolioAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31054278254272F9008652CB /* UltimatePortfolioAppApp.swift */; };
 		3105427B254272F9008652CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105427A254272F9008652CB /* ContentView.swift */; };
 		3105427D254272FB008652CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3105427C254272FB008652CB /* Assets.xcassets */; };
-		31054280254272FB008652CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3105427F254272FB008652CB /* Preview Assets.xcassets */; };
 		3105428A2542801C008652CB /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 310542882542801C008652CB /* Main.xcdatamodeld */; };
 		3105428D254282C4008652CB /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105428C254282C4008652CB /* DataController.swift */; };
 		3152F635256404E200615A9D /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152F634256404E200615A9D /* Award.swift */; };
@@ -45,7 +44,6 @@
 		31054278254272F9008652CB /* UltimatePortfolioAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UltimatePortfolioAppApp.swift; sourceTree = "<group>"; };
 		3105427A254272F9008652CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3105427C254272FB008652CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3105427F254272FB008652CB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		31054281254272FB008652CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		310542892542801C008652CB /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
 		3105428C254282C4008652CB /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -106,45 +104,100 @@
 		31054277254272F9008652CB /* UltimatePortfolioApp */ = {
 			isa = PBXGroup;
 			children = (
-				3105427C254272FB008652CB /* Assets.xcassets */,
-				31916A9C258257D4003816AB /* Awards.json */,
-				3152F637256405A200615A9D /* AwardsView.swift */,
-				3152F634256404E200615A9D /* Award.swift */,
-				3101B0A425490960005F2F2B /* Binding-OnChange.swift */,
-				31E6AD6C25601ABC00BCC524 /* Bundle-Decode.swift */,
-				3157CD01257CA8A800E5421E /* Color-Additions.swift */,
-				318A928C254C118D0054FDD7 /* Colors.xcassets */,
-				3105427A254272F9008652CB /* ContentView.swift */,
-				3105428C254282C4008652CB /* DataController.swift */,
-				3101B09E25482C8F005F2F2B /* EditItemView.swift */,
-				318A928F254D3D9B0054FDD7 /* EditProjectView.swift */,
-				31916A8C2582480C003816AB /* Localizable.strings */,
-				31916A9325825650003816AB /* Localizable.stringsdict */,
-				31C72F0A25431CDC00C5784B /* HomeView.swift */,
-				31ED5326258E553800969993 /* ProjectSummaryView.swift */,
-				31ED5323258E537000969993 /* ItemListView.swift */,
-				31054281254272FB008652CB /* Info.plist */,
-				3101B0A1254879C7005F2F2B /* ItemRowView.swift */,
-				310542882542801C008652CB /* Main.xcdatamodeld */,
-				3105427E254272FB008652CB /* Preview Content */,
-				317C84E02546FA7100FC118F /* Project-CoreDataHelpers.swift */,
-				317C84DC2546F9A600FC118F /* Item-CoreDataHelpers.swift */,
-				318A9289254C08320054FDD7 /* ProjectHeaderView.swift */,
-				31C72F0D25431FC700C5784B /* ProjectsView.swift */,
-				31EBFC50255C452B002E7B54 /* SelectSomethingView.swift */,
-				31EBFC4C255C3D11002E7B54 /* Sequence-Sorting.swift */,
-				316CA4442542BA1400C7AE62 /* UltimatePortfolioApp.entitlements */,
+				31306ED325A84FA40093FCFA /* Activities */,
+				31306ED025A84F410093FCFA /* Extensions */,
+				31306ED225A84F750093FCFA /* Localization */,
+				31306EDA25A8505E0093FCFA /* Configuration */,
 				31054278254272F9008652CB /* UltimatePortfolioAppApp.swift */,
+				3105428C254282C4008652CB /* DataController.swift */,
+				3105427A254272F9008652CB /* ContentView.swift */,
+				3105427C254272FB008652CB /* Assets.xcassets */,
+				318A928C254C118D0054FDD7 /* Colors.xcassets */,
+				31306ED725A84FF20093FCFA /* Preview Content */,
 			);
 			path = UltimatePortfolioApp;
 			sourceTree = "<group>";
 		};
-		3105427E254272FB008652CB /* Preview Content */ = {
+		31306ECD25A84EA80093FCFA /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				3105427F254272FB008652CB /* Preview Assets.xcassets */,
+				31C72F0A25431CDC00C5784B /* HomeView.swift */,
+				31ED5323258E537000969993 /* ItemListView.swift */,
+				31ED5326258E553800969993 /* ProjectSummaryView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		31306ECE25A84EAF0093FCFA /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				3101B09E25482C8F005F2F2B /* EditItemView.swift */,
+				318A928F254D3D9B0054FDD7 /* EditProjectView.swift */,
+				31C72F0D25431FC700C5784B /* ProjectsView.swift */,
+				3101B0A1254879C7005F2F2B /* ItemRowView.swift */,
+				31EBFC50255C452B002E7B54 /* SelectSomethingView.swift */,
+				318A9289254C08320054FDD7 /* ProjectHeaderView.swift */,
+			);
+			path = Projects;
+			sourceTree = "<group>";
+		};
+		31306ECF25A84EB70093FCFA /* Awards */ = {
+			isa = PBXGroup;
+			children = (
+				3152F634256404E200615A9D /* Award.swift */,
+				3152F637256405A200615A9D /* AwardsView.swift */,
+				31916A9C258257D4003816AB /* Awards.json */,
+			);
+			path = Awards;
+			sourceTree = "<group>";
+		};
+		31306ED025A84F410093FCFA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3101B0A425490960005F2F2B /* Binding-OnChange.swift */,
+				31E6AD6C25601ABC00BCC524 /* Bundle-Decode.swift */,
+				3157CD01257CA8A800E5421E /* Color-Additions.swift */,
+				31EBFC4C255C3D11002E7B54 /* Sequence-Sorting.swift */,
+				317C84E02546FA7100FC118F /* Project-CoreDataHelpers.swift */,
+				317C84DC2546F9A600FC118F /* Item-CoreDataHelpers.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		31306ED225A84F750093FCFA /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				31916A8C2582480C003816AB /* Localizable.strings */,
+				31916A9325825650003816AB /* Localizable.stringsdict */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		31306ED325A84FA40093FCFA /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				31306ECD25A84EA80093FCFA /* Home */,
+				31306ECF25A84EB70093FCFA /* Awards */,
+				31306ECE25A84EAF0093FCFA /* Projects */,
+			);
+			path = Activities;
+			sourceTree = "<group>";
+		};
+		31306ED725A84FF20093FCFA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		31306EDA25A8505E0093FCFA /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				310542882542801C008652CB /* Main.xcdatamodeld */,
+				31054281254272FB008652CB /* Info.plist */,
+				316CA4442542BA1400C7AE62 /* UltimatePortfolioApp.entitlements */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 		316CA4452542BA3100C7AE62 /* Frameworks */ = {
@@ -217,7 +270,6 @@
 				31916A8A2582480C003816AB /* Localizable.strings in Resources */,
 				318A928D254C118D0054FDD7 /* Colors.xcassets in Resources */,
 				31916A9A258257D4003816AB /* Awards.json in Resources */,
-				31054280254272FB008652CB /* Preview Assets.xcassets in Resources */,
 				3105427D254272FB008652CB /* Assets.xcassets in Resources */,
 				31916A9125825650003816AB /* Localizable.stringsdict in Resources */,
 			);
@@ -360,6 +412,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = UltimatePortfolioApp/Configuration/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -416,6 +469,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = UltimatePortfolioApp/Configuration/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -431,12 +485,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = UltimatePortfolioApp/UltimatePortfolioApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = UltimatePortfolioApp/Configuration/UltimatePortfolioApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"UltimatePortfolioApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 63H3XHC5X4;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = UltimatePortfolioApp/Info.plist;
+				INFOPLIST_FILE = UltimatePortfolioApp/Configuration/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -454,12 +508,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = UltimatePortfolioApp/UltimatePortfolioApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = UltimatePortfolioApp/Configuration/UltimatePortfolioApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"UltimatePortfolioApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 63H3XHC5X4;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = UltimatePortfolioApp/Info.plist;
+				INFOPLIST_FILE = UltimatePortfolioApp/Configuration/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -44,7 +44,6 @@ class DataController: ObservableObject {
         }
     }
 
-    
     /// Creates example projects and items to make manual testing easier.
     /// - Throws: An NSError sent from calling save() on the NSManagedObjectContext.
     func createSampleData() throws {
@@ -79,7 +78,6 @@ class DataController: ObservableObject {
         _ = try? container.viewContext.execute(batchDeleteFetchRequest2)
     }
 
-    
     /// Saves our Core Data context iff there are changes. This silently ignores
     /// any errors caused by saving, but this should be fine because our
     /// attributes are optional.
