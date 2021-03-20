@@ -25,13 +25,29 @@ class DataController: ObservableObject {
         return controller
     }()
 
+    // Static property that will locate the Main.momd in our bundle and load it into an
+    // NSManagedObjectModel instance. This prevents "Multiple NSEntityDescriptions
+    // claim the NSManagedObject subclass..." error warning because new managedObjectModel
+    // is loaded every time. (See the init for DataController.)
+    static let model: NSManagedObjectModel = {
+        guard let url = Bundle.main.url(forResource: "Main", withExtension: "momd") else {
+            fatalError("Failed to locate model file.")
+        }
+
+        guard let managedObjectModel = NSManagedObjectModel(contentsOf: url) else {
+            fatalError("Failed to load model file.")
+        }
+
+        return managedObjectModel
+    }()
+
     /// Initializes a data controller either in memory (for temporary use such as testing and previewing.
     ///  or on permanent storage (for use in regular app runs.)
     ///
     /// Defaults to permanent storage.
     /// - Parameter inMemory: Where to store this data in temporary memory or not.
     init(inMemory: Bool = false) {
-        container = NSPersistentCloudKitContainer(name: "Main")
+        container = NSPersistentCloudKitContainer(name: "Main", managedObjectModel: Self.model)
 
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
@@ -41,6 +57,12 @@ class DataController: ObservableObject {
             if let error = error {
                 fatalError("Fatal error loading store: \(error.localizedDescription)")
             }
+            
+            #if DEBUG
+            if CommandLine.arguments.contains("enable-testing") {
+                self.deleteAll()
+            }
+            #endif
         }
     }
 
@@ -55,7 +77,7 @@ class DataController: ObservableObject {
             project.creationDate = Date()
             project.items = []
             project.closed = Bool.random()
-            (1...5).forEach { itemCounter in
+            (1...10).forEach { itemCounter in
                 let item = Item(context: viewContext)
                 item.title = "Item \(itemCounter)"
                 item.creationDate = Date()

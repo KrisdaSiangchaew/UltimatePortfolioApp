@@ -38,7 +38,8 @@ struct ItemListView: View {
                     .shadow(color: Color.black.opacity(0.2), radius: 5)
                 }
             }
-        }    }
+        }
+    }
 }
 
 // struct ItemListView_Previews: PreviewProvider {

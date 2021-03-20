@@ -21,7 +21,11 @@ extension Project {
     }
 
     static var example: Project {
-        let controller = DataController(inMemory: true)
+        // replace our local DataController instance with the preview instance
+        // then it gets created as a singleton – Swift will keep the preview alive because
+        // it alongs to the DataController class, rather than being created locally in the
+        // example properties.
+        let controller = DataController.preview
         let viewContext = controller.container.viewContext
 
         let project = Project(context: viewContext)
