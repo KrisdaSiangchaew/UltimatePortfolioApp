@@ -41,6 +41,7 @@
 		31E8E09A2605967B00D7AE1F /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8E0992605967B00D7AE1F /* PerformanceTests.swift */; };
 		31E8E0A426059B2F00D7AE1F /* UltimatePortfolioAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8E0A326059B2F00D7AE1F /* UltimatePortfolioAppUITests.swift */; };
 		31E8E0AF2605E80200D7AE1F /* ProjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8E0AE2605E80200D7AE1F /* ProjectsViewModel.swift */; };
+		31E8E0B42605F2FA00D7AE1F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8E0B32605F2FA00D7AE1F /* HomeViewModel.swift */; };
 		31EBFC4D255C3D11002E7B54 /* Sequence-Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EBFC4C255C3D11002E7B54 /* Sequence-Sorting.swift */; };
 		31EBFC51255C452B002E7B54 /* SelectSomethingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EBFC50255C452B002E7B54 /* SelectSomethingView.swift */; };
 		31ED5324258E537000969993 /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ED5323258E537000969993 /* ItemListView.swift */; };
@@ -109,6 +110,7 @@
 		31E8E0A326059B2F00D7AE1F /* UltimatePortfolioAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UltimatePortfolioAppUITests.swift; sourceTree = "<group>"; };
 		31E8E0A526059B2F00D7AE1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31E8E0AE2605E80200D7AE1F /* ProjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewModel.swift; sourceTree = "<group>"; };
+		31E8E0B32605F2FA00D7AE1F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		31EBFC4C255C3D11002E7B54 /* Sequence-Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence-Sorting.swift"; sourceTree = "<group>"; };
 		31EBFC50255C452B002E7B54 /* SelectSomethingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSomethingView.swift; sourceTree = "<group>"; };
 		31ED5323258E537000969993 /* ItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				31C72F0A25431CDC00C5784B /* HomeView.swift */,
+				31E8E0B32605F2FA00D7AE1F /* HomeViewModel.swift */,
 				31ED5323258E537000969993 /* ItemListView.swift */,
 				31ED5326258E553800969993 /* ProjectSummaryView.swift */,
 			);
@@ -466,6 +469,7 @@
 				318A928A254C08320054FDD7 /* ProjectHeaderView.swift in Sources */,
 				3152F638256405A200615A9D /* AwardsView.swift in Sources */,
 				3105428A2542801C008652CB /* Main.xcdatamodeld in Sources */,
+				31E8E0B42605F2FA00D7AE1F /* HomeViewModel.swift in Sources */,
 				317C84E12546FA7100FC118F /* Project-CoreDataHelpers.swift in Sources */,
 				3157CD02257CA8A800E5421E /* Color-Additions.swift in Sources */,
 				318A9290254D3D9B0054FDD7 /* EditProjectView.swift in Sources */,

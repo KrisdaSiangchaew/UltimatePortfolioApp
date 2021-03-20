@@ -9,31 +9,13 @@ import SwiftUI
 import CoreData
 
 struct HomeView: View {
-    @EnvironmentObject var dataController: DataController
-
-    @FetchRequest<Project>(
-        entity: Project.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Project.title, ascending: true)
-        ],
-        predicate: NSPredicate(format: "closed = false"))
-    var projects: FetchedResults<Project>
-
-    let items: FetchRequest<Item>
+    @StateObject var viewModel: ViewModel
 
     static let tag: String? = "Home"
 
-    init() {
-        let sortDescriptors = [NSSortDescriptor(keyPath: \Item.priority, ascending: false)]
-        let completedPredicate = NSPredicate(format: "completed = false")
-        let openPredicate = NSPredicate(format: "project.closed = false")
-        let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [completedPredicate, openPredicate])
-
-        let fetchRequest = NSFetchRequest<Item>(entityName: "Item")
-        fetchRequest.sortDescriptors = sortDescriptors
-        fetchRequest.predicate = compoundPredicate
-
-        items = FetchRequest(fetchRequest: fetchRequest)
+    init(dataController: DataController) {
+        let viewModel = ViewModel(dataController: dataController)
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
 
     var rows: [GridItem] = [
@@ -47,16 +29,14 @@ struct HomeView: View {
                     // Horizontal scrolling all projects
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHGrid(rows: rows, spacing: 16) {
-                            ForEach(projects) { project in
-                                ProjectSummaryView(project: project)
-                            }
+                            ForEach(viewModel.projects, content: ProjectSummaryView.init)
                         }
                         .padding([.horizontal, .top])
                         .fixedSize(horizontal: false, vertical: true)
                     }
                     VStack(alignment: .leading, spacing: 30) {
-                        ItemListView(title: "Up next", items: items.wrappedValue.prefix(3))
-                        ItemListView(title: "More to explore", items: items.wrappedValue.dropFirst(3))
+                        ItemListView(title: "Up next", items: viewModel.upNext)
+                        ItemListView(title: "More to explore", items: viewModel.moreToExplore)
                     }
                     .padding(.horizontal)
                 }
@@ -65,8 +45,7 @@ struct HomeView: View {
             .background(Color.systemGroupedBackground.ignoresSafeArea())
             .toolbar {
                 Button("Add Data") {
-                    dataController.deleteAll()
-                    try? dataController.createSampleData()
+                    viewModel.addSampleData()
                 }
             }
         }
@@ -74,10 +53,7 @@ struct HomeView: View {
 }
 
 struct HomeView_Previews: PreviewProvider {
-    static let dataController = DataController.preview
-
     static var previews: some View {
-        HomeView()
-            .environmentObject(dataController)
+        HomeView(dataController: .preview)
     }
 }
