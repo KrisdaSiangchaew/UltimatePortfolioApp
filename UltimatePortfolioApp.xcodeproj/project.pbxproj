@@ -40,6 +40,7 @@
 		31E6AD6D25601ABC00BCC524 /* Bundle-Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6AD6C25601ABC00BCC524 /* Bundle-Decode.swift */; };
 		31E8E09A2605967B00D7AE1F /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8E0992605967B00D7AE1F /* PerformanceTests.swift */; };
 		31E8E0A426059B2F00D7AE1F /* UltimatePortfolioAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8E0A326059B2F00D7AE1F /* UltimatePortfolioAppUITests.swift */; };
+		31E8E0AF2605E80200D7AE1F /* ProjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8E0AE2605E80200D7AE1F /* ProjectsViewModel.swift */; };
 		31EBFC4D255C3D11002E7B54 /* Sequence-Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EBFC4C255C3D11002E7B54 /* Sequence-Sorting.swift */; };
 		31EBFC51255C452B002E7B54 /* SelectSomethingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EBFC50255C452B002E7B54 /* SelectSomethingView.swift */; };
 		31ED5324258E537000969993 /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ED5323258E537000969993 /* ItemListView.swift */; };
@@ -107,6 +108,7 @@
 		31E8E0A126059B2F00D7AE1F /* UltimatePortfolioAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UltimatePortfolioAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31E8E0A326059B2F00D7AE1F /* UltimatePortfolioAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UltimatePortfolioAppUITests.swift; sourceTree = "<group>"; };
 		31E8E0A526059B2F00D7AE1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31E8E0AE2605E80200D7AE1F /* ProjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewModel.swift; sourceTree = "<group>"; };
 		31EBFC4C255C3D11002E7B54 /* Sequence-Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence-Sorting.swift"; sourceTree = "<group>"; };
 		31EBFC50255C452B002E7B54 /* SelectSomethingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSomethingView.swift; sourceTree = "<group>"; };
 		31ED5323258E537000969993 /* ItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				3101B09E25482C8F005F2F2B /* EditItemView.swift */,
 				318A928F254D3D9B0054FDD7 /* EditProjectView.swift */,
 				31C72F0D25431FC700C5784B /* ProjectsView.swift */,
+				31E8E0AE2605E80200D7AE1F /* ProjectsViewModel.swift */,
 				3101B0A1254879C7005F2F2B /* ItemRowView.swift */,
 				31EBFC50255C452B002E7B54 /* SelectSomethingView.swift */,
 				318A9289254C08320054FDD7 /* ProjectHeaderView.swift */,
@@ -478,6 +481,7 @@
 				31C72F0B25431CDC00C5784B /* HomeView.swift in Sources */,
 				31054279254272F9008652CB /* UltimatePortfolioAppApp.swift in Sources */,
 				317C84DD2546F9A600FC118F /* Item-CoreDataHelpers.swift in Sources */,
+				31E8E0AF2605E80200D7AE1F /* ProjectsViewModel.swift in Sources */,
 				3101B09F25482C8F005F2F2B /* EditItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

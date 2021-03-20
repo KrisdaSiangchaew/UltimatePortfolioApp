@@ -8,41 +8,32 @@
 import SwiftUI
 
 struct ProjectsView: View {
-    @Environment(\.managedObjectContext) var moc
-    @EnvironmentObject var dataController: DataController
-
-    @State private var showingSortOrder = false
-    @State private var sortOrder = Item.SortOrder.optimized
-
-    let showClosedProjects: Bool
-    let projects: FetchRequest<Project>
-
+    @StateObject var viewModel: ViewModel
+    
     static let openTag: String? = "Open"
     static let closedTag: String? = "Close"
-
-    init(showClosedProjects: Bool) {
-        self.showClosedProjects = showClosedProjects
-
-        self.projects = FetchRequest<Project>(
-            entity: Project.entity(),
-            sortDescriptors: [NSSortDescriptor(keyPath: \Project.creationDate, ascending: false)],
-            predicate: NSPredicate(format: "closed = %d", showClosedProjects))
+    
+    init(dataController: DataController, showClosedProjects: Bool) {
+        let viewModel = ViewModel(dataController: dataController, showClosedProjects: showClosedProjects)
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
 
     var projectList: some View {
         List {
-            ForEach(projects.wrappedValue) { project in
+            ForEach(viewModel.projects) { project in
                 Section(header: ProjectHeaderView(project: project)) {
-                    ForEach(project.projectItems(using: sortOrder)) { item in
+                    ForEach(project.projectItems(using: viewModel.sortOrder)) { item in
                         ItemRowView(project: project, item: item)
                     }
                     .onDelete { indexSet in
-                        delete(indexSet, from: project)
+                        viewModel.delete(indexSet, from: project)
                     }
 
-                    if showClosedProjects == false {
+                    if viewModel.showClosedProjects == false {
                         Button {
-                            addItem(to: project)
+                            withAnimation {
+                                viewModel.addItem(to: project)
+                            }
                         } label: {
                             Label("Add New Item", systemImage: "plus")
                         }
@@ -55,8 +46,12 @@ struct ProjectsView: View {
 
     var addProjectToolbarItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
-            if showClosedProjects == false {
-                Button(action: addProject) {
+            if viewModel.showClosedProjects == false {
+                Button {
+                    withAnimation {
+                        viewModel.addProject()
+                    }
+                } label: {
                     // Context: In iOS 14.3 VoiceOver has a glitch that reads the label
                     // "Add Project" as "Add" no matter what accessibility label
                     // we give this toolbar button when using a label.
@@ -76,45 +71,17 @@ struct ProjectsView: View {
     var sortToolbarItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             Button {
-                showingSortOrder.toggle()
+                viewModel.showingSortOrder.toggle()
             } label: {
                 Label("Sort", systemImage: "arrow.up.arrow.down")
             }
         }
     }
 
-    fileprivate func addItem(to project: Project) {
-        withAnimation {
-            let item = Item(context: moc)
-            item.project = project
-            item.creationDate = Date()
-            dataController.save()
-        }
-    }
-
-    fileprivate func delete(_ indexSet: IndexSet, from project: Project) {
-        let allItems = project.projectItems(using: sortOrder)
-
-        for index in indexSet {
-            let item = allItems[index]
-            dataController.delete(item)
-        }
-        dataController.save()
-    }
-
-    fileprivate func addProject() {
-        withAnimation {
-            let project = Project(context: moc)
-            project.closed = false
-            project.creationDate = Date()
-            dataController.save()
-        }
-    }
-
     var body: some View {
         NavigationView {
             Group {
-                if projects.wrappedValue.count == 0 {
+                if viewModel.projects.count == 0 {
                     Text("There's nothing here right now.")
                         .foregroundColor(.secondary)
                 } else {
@@ -125,12 +92,12 @@ struct ProjectsView: View {
                 addProjectToolbarItem
                 sortToolbarItem
             }
-            .navigationTitle(showClosedProjects ? "Closed Projects" : "Open Projects")
-            .actionSheet(isPresented: $showingSortOrder) {
+            .navigationTitle(viewModel.showClosedProjects ? "Closed Projects" : "Open Projects")
+            .actionSheet(isPresented: $viewModel.showingSortOrder) {
                 ActionSheet(title: Text("Sort items"), message: nil, buttons: [
-                    .default(Text("Optimized"), action: { sortOrder = .optimized}),
-                    .default(Text("Creation Date"), action: { sortOrder = .creationDate}),
-                    .default(Text("Title"), action: { sortOrder = .title})
+                    .default(Text("Optimized"), action: { viewModel.sortOrder = .optimized}),
+                    .default(Text("Creation Date"), action: { viewModel.sortOrder = .creationDate}),
+                    .default(Text("Title"), action: { viewModel.sortOrder = .title})
                 ])
             }
 
@@ -142,7 +109,7 @@ struct ProjectsView: View {
 struct ProjectsView_Previews: PreviewProvider {
     static let dataController = DataController.preview
     static var previews: some View {
-        ProjectsView(showClosedProjects: false)
+        ProjectsView(dataController: dataController, showClosedProjects: false)
             .environment(\.managedObjectContext, dataController.container.viewContext)
             .environmentObject(dataController)
     }
