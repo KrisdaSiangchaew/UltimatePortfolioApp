@@ -167,13 +167,13 @@
 		31054277254272F9008652CB /* UltimatePortfolioApp */ = {
 			isa = PBXGroup;
 			children = (
+				3105427A254272F9008652CB /* ContentView.swift */,
 				31306ED325A84FA40093FCFA /* Activities */,
 				31306ED025A84F410093FCFA /* Extensions */,
 				31306ED225A84F750093FCFA /* Localization */,
 				31306EDA25A8505E0093FCFA /* Configuration */,
 				31054278254272F9008652CB /* UltimatePortfolioAppApp.swift */,
 				3105428C254282C4008652CB /* DataController.swift */,
-				3105427A254272F9008652CB /* ContentView.swift */,
 				3105427C254272FB008652CB /* Assets.xcassets */,
 				318A928C254C118D0054FDD7 /* Colors.xcassets */,
 				31306ED725A84FF20093FCFA /* Preview Content */,

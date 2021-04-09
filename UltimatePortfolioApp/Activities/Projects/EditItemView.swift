@@ -51,9 +51,7 @@ struct EditItemView: View {
 //        .onChange(of: detail, perform: { _ in update() })
 //        .onChange(of: priority, perform: { _ in update() })
 //        .onChange(of: completed, perform: { _ in update() })
-        .onDisappear(perform: {
-            dataController.save()
-        })
+        .onDisappear(perform: save)
     }
 
     func update() {
@@ -62,6 +60,10 @@ struct EditItemView: View {
         item.detail = detail
         item.priority = Int16(priority)
         item.completed = completed
+    }
+    
+    func save() {
+        dataController.update(item)
     }
 }
 
