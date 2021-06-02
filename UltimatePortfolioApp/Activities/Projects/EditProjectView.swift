@@ -20,7 +20,7 @@ struct EditProjectView: View {
     @State private var closed: Bool
 
     @State private var showDeleteConfirm = false
-    
+
     @State private var engine = try? CHHapticEngine()
 
     init(project: Project) {
@@ -72,7 +72,7 @@ struct EditProjectView: View {
             // swiftlint:disable:next line_length
             Section(footer: Text("Close this project will move this project to Closed tab. Delete the project will delete the project from memory.")) {
                 Button(project.closed ? "Reopen this project" : "Close this project", action: toggleClosed)
-                
+
                 Button("Delete this project") {
                     showDeleteConfirm.toggle()
                 }
@@ -107,43 +107,43 @@ struct EditProjectView: View {
         dataController.delete(project)
         presentationMode.wrappedValue.dismiss()
     }
-    
+
     func toggleClosed() {
         project.closed.toggle()
-        
+
         if project.closed {
             do {
                 try engine?.start()
-                
+
                 let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0)
                 let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
                 let start = CHHapticParameterCurve.ControlPoint(relativeTime: 0, value: 1)
                 let end = CHHapticParameterCurve.ControlPoint(relativeTime: 1, value: 0)
-                
+
                 let parameter = CHHapticParameterCurve(
                     parameterID: .hapticIntensityControl,
                     controlPoints: [start, end],
                     relativeTime: 0
                 )
-                
+
                 let event1 = CHHapticEvent(
                     eventType: .hapticTransient,
                     parameters: [intensity, sharpness],
                     relativeTime: 0
                 )
-                
+
                 let event2 = CHHapticEvent(
                     eventType: .hapticContinuous,
                     parameters: [sharpness, intensity],
                     relativeTime: 0.125,
                     duration: 1
                 )
-                
+
                 let pattern = try CHHapticPattern(events: [event1, event2], parameterCurves: [parameter])
-                
+
                 let player = try engine?.makePlayer(with: pattern)
                 try player?.start(atTime: 0)
-                
+
             } catch {
                 // playing haptics didn't work, but that's okay
                 print(error.localizedDescription)

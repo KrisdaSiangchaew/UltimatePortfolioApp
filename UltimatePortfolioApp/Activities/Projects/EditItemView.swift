@@ -61,7 +61,7 @@ struct EditItemView: View {
         item.priority = Int16(priority)
         item.completed = completed
     }
-    
+
     func save() {
         dataController.update(item)
     }

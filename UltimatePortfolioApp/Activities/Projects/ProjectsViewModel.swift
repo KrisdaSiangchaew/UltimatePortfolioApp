@@ -12,15 +12,15 @@ import SwiftUI
 extension ProjectsView {
     class ViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDelegate {
         let dataController: DataController
-        
+
         var showingSortOrder = false
         var sortOrder = Item.SortOrder.optimized
 
         let showClosedProjects: Bool
-        
+
         private let projectsController: NSFetchedResultsController<Project>
         @Published var projects = [Project]()
-        
+
         init(dataController: DataController, showClosedProjects: Bool) {
             self.dataController = dataController
             self.showClosedProjects = showClosedProjects
@@ -28,17 +28,17 @@ extension ProjectsView {
             let request: NSFetchRequest<Project> = Project.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(keyPath: \Project.creationDate, ascending: false)]
             request.predicate = NSPredicate(format: "closed = %d", showClosedProjects)
-            
+
             projectsController = NSFetchedResultsController(
                 fetchRequest: request,
                 managedObjectContext: dataController.container.viewContext,
                 sectionNameKeyPath: nil,
                 cacheName: nil
             )
-            
+
             super.init()
             projectsController.delegate = self
-            
+
             do {
                 try projectsController.performFetch()
                 projects = projectsController.fetchedObjects ?? []
@@ -46,7 +46,7 @@ extension ProjectsView {
                 print("Failed to fetch projects")
             }
         }
-        
+
         func addItem(to project: Project) {
             let item = Item(context: dataController.container.viewContext)
             item.project = project
@@ -70,7 +70,7 @@ extension ProjectsView {
             project.creationDate = Date()
             dataController.save()
         }
-        
+
         func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
             if let newProjects = controller.fetchedObjects as? [Project] {
                 projects = newProjects

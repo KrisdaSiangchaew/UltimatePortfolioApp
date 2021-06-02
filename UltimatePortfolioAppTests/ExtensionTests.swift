@@ -62,16 +62,16 @@ class ExtensionTests: BaseTestCase {
         XCTAssertEqual(decoded.count, 2, "Output should contain same amount of items in DecodableDictionary.json")
         XCTAssertEqual(decoded, ["1": 1, "2": 2], "Output should equal content of DecodableDictionary.json")
     }
-    
+
     func testBindingOnChange() {
         var onChangeFunctionRun = false
-        
+
         func exampleFunctionRun() {
             onChangeFunctionRun = true
         }
-        
+
         var storedValue = ""
-        
+
         let binding = Binding(
             get: {
                 storedValue
@@ -80,12 +80,12 @@ class ExtensionTests: BaseTestCase {
                 storedValue = $0
             }
         )
-        
+
         let changedBinding = binding.onChange(exampleFunctionRun)
 
         // When
         changedBinding.wrappedValue = "Test"
-        
+
         // Then
         XCTAssertTrue(onChangeFunctionRun, "Output should be true when exampleFunctionRun() is called.")
     }

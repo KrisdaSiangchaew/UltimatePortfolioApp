@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreSpotlight
 
 struct ContentView: View {
     @SceneStorage("selectedView") var selectedView: String?
@@ -19,18 +20,21 @@ struct ContentView: View {
                     Image(systemName: "house")
                     Text("Home")
                 }
+
             ProjectsView(dataController: dataController, showClosedProjects: false)
                 .tag(ProjectsView.openTag)
                 .tabItem {
                     Image(systemName: "list.bullet")
                     Text("Open")
                 }
+
             ProjectsView(dataController: dataController, showClosedProjects: true)
                 .tag(ProjectsView.closedTag)
                 .tabItem {
                     Image(systemName: "checkmark")
                     Text("Closed")
                 }
+
             AwardsView()
                 .tag(AwardsView.tag)
                 .tabItem {
@@ -38,6 +42,11 @@ struct ContentView: View {
                     Text("Awards")
                 }
         }
+        .onContinueUserActivity(CSSearchableItemActionType, perform: moveToHome)
+    }
+
+    func moveToHome(_ input: Any) {
+        selectedView = HomeView.tag
     }
 }
 

@@ -10,7 +10,7 @@ import SwiftUI
 struct ItemListView: View {
     let title: LocalizedStringKey
     let items: ArraySlice<Item>
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(title)

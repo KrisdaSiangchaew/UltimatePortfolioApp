@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import CoreSpotlight
 
 struct HomeView: View {
     @StateObject var viewModel: ViewModel
@@ -25,6 +26,16 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ScrollView {
+                if let item = viewModel.selectedItem {
+                   NavigationLink(
+                        destination: EditItemView(item: item),
+                        tag: item,
+                        selection: $viewModel.selectedItem,
+                        label: EmptyView.init
+                   )
+                   .id(item)
+                }
+
                 VStack(alignment: .leading, spacing: 20) {
                     // Horizontal scrolling all projects
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -48,6 +59,13 @@ struct HomeView: View {
                     viewModel.addSampleData()
                 }
             }
+            .onContinueUserActivity(CSSearchableItemActionType, perform: loadSpotlightItem)
+        }
+    }
+
+    func loadSpotlightItem(_ userActivity: NSUserActivity) {
+        if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
+            viewModel.selectItem(with: uniqueIdentifier)
         }
     }
 }

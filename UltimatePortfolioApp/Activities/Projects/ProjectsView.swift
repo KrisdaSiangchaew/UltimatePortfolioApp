@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ProjectsView: View {
     @StateObject var viewModel: ViewModel
-    
+
     static let openTag: String? = "Open"
     static let closedTag: String? = "Close"
-    
+
     init(dataController: DataController, showClosedProjects: Bool) {
         let viewModel = ViewModel(dataController: dataController, showClosedProjects: showClosedProjects)
         _viewModel = StateObject(wrappedValue: viewModel)
