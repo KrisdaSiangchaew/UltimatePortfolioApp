@@ -22,6 +22,11 @@ struct EditProjectView: View {
     @State private var showDeleteConfirm = false
 
     @State private var engine = try? CHHapticEngine()
+    
+    @State private var remindMe: Bool
+    @State private var reminderTime: Date
+    
+    @State private var showNotificationsError = false
 
     init(project: Project) {
         self.project = project
@@ -30,6 +35,14 @@ struct EditProjectView: View {
         _detail = State(wrappedValue: project.projectDetail)
         _color = State(wrappedValue: project.projectColor)
         _closed = State(wrappedValue: project.closed)
+        
+        if let projectReminderTime = project.reminderTime {
+            _reminderTime = State(wrappedValue: projectReminderTime)
+            _remindMe = State(wrappedValue: true)
+        } else {
+            _reminderTime = State(wrappedValue: Date())
+            _remindMe = State(wrappedValue: false)
+        }
     }
 
     let colorColumns = GridItem(.adaptive(minimum: 44))
@@ -68,6 +81,17 @@ struct EditProjectView: View {
                 }
                 .padding(.vertical)
             }
+            
+            Section(header: Text("Project reminders")) {
+                Toggle("Show reminders", isOn: $remindMe.animation().onChange(update))
+                
+                if remindMe {
+                    DatePicker(
+                        "Reminder time",
+                        selection: $reminderTime,
+                        displayedComponents: .hourAndMinute)
+                }
+            }
 
             // swiftlint:disable:next line_length
             Section(footer: Text("Close this project will move this project to Closed tab. Delete the project will delete the project from memory.")) {
@@ -81,13 +105,21 @@ struct EditProjectView: View {
         }
         .navigationTitle("Edit Project")
         .onDisappear(perform: update)
-        .alert(isPresented: $showDeleteConfirm, content: {
-            Alert(title: Text("Delete project?"),
-                  // swiftlint:disable:next line_length
-                  message: Text("Are you sure you want to delete this project? It will also delete all items it contains."),
-                  primaryButton: .default(Text("Delete"), action: delete),
-                  secondaryButton: .cancel())
-        })
+        .alert(isPresented: $showDeleteConfirm) {
+            Alert(
+                title: Text("Delete project?"),
+                // swiftlint:disable:next line_length
+                message: Text("Are you sure you want to delete this project? It will also delete all items it contains."),
+                primaryButton: .default(Text("Delete"), action: delete),
+                secondaryButton: .cancel())
+            }
+        .alert(isPresented: $showNotificationsError) {
+            Alert(
+                title: Text("Oops!"),
+                message: Text("There was a problem. Please check you have notifications enabled."),
+                primaryButton: .default(Text("Check setting"), action: showAppSettings),
+                secondaryButton: .cancel())
+            }
     }
 
     // Specifics: In iOS 14.3 calling update() here will cause the view to immediately switch back
@@ -101,6 +133,21 @@ struct EditProjectView: View {
         project.title = title
         project.detail = detail
         project.color = color
+        
+        if remindMe {
+            project.reminderTime = reminderTime
+            
+            dataController.addReminders(for: project) { success in
+                if success == false {
+                    project.reminderTime = nil
+                    remindMe = false
+                    showNotificationsError = true
+                }
+            }
+        } else {
+            project.reminderTime = nil
+            dataController.removeReminders(for: project)
+        }
     }
 
     func delete() {
@@ -148,6 +195,14 @@ struct EditProjectView: View {
                 // playing haptics didn't work, but that's okay
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    func showAppSettings() {
+        guard let settingURL = URL(string: UIApplication.openSettingsURLString) else { return }
+        
+        if UIApplication.shared.canOpenURL(settingURL) {
+            UIApplication.shared.open(settingURL)
         }
     }
 }
