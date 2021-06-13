@@ -10,10 +10,13 @@ import SwiftUI
 @main
 struct UltimatePortfolioAppApp: App {
     @StateObject var dataController: DataController
+    @StateObject var unlockManager: UnlockManager
 
     init() {
-        let controller = DataController()
-        _dataController = StateObject(wrappedValue: controller)
+        let dataController = DataController()
+        let unlockManager = UnlockManager(dataController: dataController)
+        _dataController = StateObject(wrappedValue: dataController)
+        _unlockManager = StateObject(wrappedValue: unlockManager)
     }
 
     var body: some Scene {
@@ -21,6 +24,7 @@ struct UltimatePortfolioAppApp: App {
             ContentView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 .environmentObject(dataController)
+                .environmentObject(unlockManager)
                 .onReceive(
                     // Automatically save when we detect that we are no longer
                     // the foreground app. Use this rather than the scene phase

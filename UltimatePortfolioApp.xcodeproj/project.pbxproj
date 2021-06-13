@@ -17,6 +17,11 @@
 		3105428D254282C4008652CB /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105428C254282C4008652CB /* DataController.swift */; };
 		3122D0DF25DE299000F5AD72 /* ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122D0DE25DE299000F5AD72 /* ExtensionTests.swift */; };
 		3122D0EA25DE5C6500F5AD72 /* DecodableString.json in Resources */ = {isa = PBXBuildFile; fileRef = 3122D0E925DE5C6500F5AD72 /* DecodableString.json */; };
+		3138820E26749B8A00CCE393 /* UnlockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3138820D26749B8A00CCE393 /* UnlockManager.swift */; };
+		313882112674AC1000CCE393 /* SKProduct-LocalizedPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313882102674AC1000CCE393 /* SKProduct-LocalizedPrice.swift */; };
+		313882132674AD3F00CCE393 /* PurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313882122674AD3F00CCE393 /* PurchaseButton.swift */; };
+		313882152674AE7B00CCE393 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313882142674AE7B00CCE393 /* ProductView.swift */; };
+		313882172675903700CCE393 /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313882162675903700CCE393 /* UnlockView.swift */; };
 		3152F635256404E200615A9D /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152F634256404E200615A9D /* Award.swift */; };
 		3152F638256405A200615A9D /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152F637256405A200615A9D /* AwardsView.swift */; };
 		3157CD02257CA8A800E5421E /* Color-Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3157CD01257CA8A800E5421E /* Color-Additions.swift */; };
@@ -78,6 +83,12 @@
 		3105428C254282C4008652CB /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		3122D0DE25DE299000F5AD72 /* ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTests.swift; sourceTree = "<group>"; };
 		3122D0E925DE5C6500F5AD72 /* DecodableString.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DecodableString.json; sourceTree = "<group>"; };
+		3138820D26749B8A00CCE393 /* UnlockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockManager.swift; sourceTree = "<group>"; };
+		3138820F26749FF800CCE393 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
+		313882102674AC1000CCE393 /* SKProduct-LocalizedPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct-LocalizedPrice.swift"; sourceTree = "<group>"; };
+		313882122674AD3F00CCE393 /* PurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButton.swift; sourceTree = "<group>"; };
+		313882142674AE7B00CCE393 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		313882162675903700CCE393 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
 		3152F634256404E200615A9D /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		3152F637256405A200615A9D /* AwardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsView.swift; sourceTree = "<group>"; };
 		3157CD01257CA8A800E5421E /* Color-Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Additions.swift"; sourceTree = "<group>"; };
@@ -204,9 +215,9 @@
 		31306ECE25A84EAF0093FCFA /* Projects */ = {
 			isa = PBXGroup;
 			children = (
+				31C72F0D25431FC700C5784B /* ProjectsView.swift */,
 				3101B09E25482C8F005F2F2B /* EditItemView.swift */,
 				318A928F254D3D9B0054FDD7 /* EditProjectView.swift */,
-				31C72F0D25431FC700C5784B /* ProjectsView.swift */,
 				31E8E0AE2605E80200D7AE1F /* ProjectsViewModel.swift */,
 				3101B0A1254879C7005F2F2B /* ItemRowView.swift */,
 				31EBFC50255C452B002E7B54 /* SelectSomethingView.swift */,
@@ -234,6 +245,7 @@
 				31EBFC4C255C3D11002E7B54 /* Sequence-Sorting.swift */,
 				317C84E02546FA7100FC118F /* Project-CoreDataHelpers.swift */,
 				317C84DC2546F9A600FC118F /* Item-CoreDataHelpers.swift */,
+				313882102674AC1000CCE393 /* SKProduct-LocalizedPrice.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -250,6 +262,7 @@
 		31306ED325A84FA40093FCFA /* Activities */ = {
 			isa = PBXGroup;
 			children = (
+				313882182675945B00CCE393 /* Unlock */,
 				31306ECD25A84EA80093FCFA /* Home */,
 				31306ECF25A84EB70093FCFA /* Awards */,
 				31306ECE25A84EAF0093FCFA /* Projects */,
@@ -267,11 +280,23 @@
 		31306EDA25A8505E0093FCFA /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				3138820F26749FF800CCE393 /* Configuration.storekit */,
 				310542882542801C008652CB /* Main.xcdatamodeld */,
 				31054281254272FB008652CB /* Info.plist */,
 				316CA4442542BA1400C7AE62 /* UltimatePortfolioApp.entitlements */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		313882182675945B00CCE393 /* Unlock */ = {
+			isa = PBXGroup;
+			children = (
+				3138820D26749B8A00CCE393 /* UnlockManager.swift */,
+				313882142674AE7B00CCE393 /* ProductView.swift */,
+				313882162675903700CCE393 /* UnlockView.swift */,
+				313882122674AD3F00CCE393 /* PurchaseButton.swift */,
+			);
+			path = Unlock;
 			sourceTree = "<group>";
 		};
 		316CA4452542BA3100C7AE62 /* Frameworks */ = {
@@ -466,14 +491,19 @@
 			files = (
 				31C72F0E25431FC700C5784B /* ProjectsView.swift in Sources */,
 				31ED5327258E553800969993 /* ProjectSummaryView.swift in Sources */,
+				313882172675903700CCE393 /* UnlockView.swift in Sources */,
 				318A928A254C08320054FDD7 /* ProjectHeaderView.swift in Sources */,
 				3152F638256405A200615A9D /* AwardsView.swift in Sources */,
 				3105428A2542801C008652CB /* Main.xcdatamodeld in Sources */,
+				3138820E26749B8A00CCE393 /* UnlockManager.swift in Sources */,
 				31E8E0B42605F2FA00D7AE1F /* HomeViewModel.swift in Sources */,
 				317C84E12546FA7100FC118F /* Project-CoreDataHelpers.swift in Sources */,
 				3157CD02257CA8A800E5421E /* Color-Additions.swift in Sources */,
+				313882112674AC1000CCE393 /* SKProduct-LocalizedPrice.swift in Sources */,
+				313882152674AE7B00CCE393 /* ProductView.swift in Sources */,
 				318A9290254D3D9B0054FDD7 /* EditProjectView.swift in Sources */,
 				3105428D254282C4008652CB /* DataController.swift in Sources */,
+				313882132674AD3F00CCE393 /* PurchaseButton.swift in Sources */,
 				31EBFC51255C452B002E7B54 /* SelectSomethingView.swift in Sources */,
 				3152F635256404E200615A9D /* Award.swift in Sources */,
 				3101B0A2254879C7005F2F2B /* ItemRowView.swift in Sources */,
