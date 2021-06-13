@@ -102,17 +102,17 @@ struct EditProjectView: View {
                 }
                 .accentColor(.red)
             }
+            .alert(isPresented: $showDeleteConfirm) {
+                Alert(
+                    title: Text("Delete project?"),
+                    // swiftlint:disable:next line_length
+                    message: Text("Are you sure you want to delete this project? It will also delete all items it contains."),
+                    primaryButton: .default(Text("Delete"), action: delete),
+                    secondaryButton: .cancel())
+                }
         }
         .navigationTitle("Edit Project")
         .onDisappear(perform: update)
-        .alert(isPresented: $showDeleteConfirm) {
-            Alert(
-                title: Text("Delete project?"),
-                // swiftlint:disable:next line_length
-                message: Text("Are you sure you want to delete this project? It will also delete all items it contains."),
-                primaryButton: .default(Text("Delete"), action: delete),
-                secondaryButton: .cancel())
-            }
         .alert(isPresented: $showNotificationsError) {
             Alert(
                 title: Text("Oops!"),

@@ -22,6 +22,8 @@
 		313882132674AD3F00CCE393 /* PurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313882122674AD3F00CCE393 /* PurchaseButton.swift */; };
 		313882152674AE7B00CCE393 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313882142674AE7B00CCE393 /* ProductView.swift */; };
 		313882172675903700CCE393 /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313882162675903700CCE393 /* UnlockView.swift */; };
+		3138821A2675AA9500CCE393 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313882192675AA9500CCE393 /* AppDelegate.swift */; };
+		3138821C2675AACB00CCE393 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3138821B2675AACB00CCE393 /* SceneDelegate.swift */; };
 		3152F635256404E200615A9D /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152F634256404E200615A9D /* Award.swift */; };
 		3152F638256405A200615A9D /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152F637256405A200615A9D /* AwardsView.swift */; };
 		3157CD02257CA8A800E5421E /* Color-Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3157CD01257CA8A800E5421E /* Color-Additions.swift */; };
@@ -70,6 +72,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		313882352675F82B00CCE393 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3101B09E25482C8F005F2F2B /* EditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = "<group>"; };
 		3101B0A1254879C7005F2F2B /* ItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowView.swift; sourceTree = "<group>"; };
@@ -89,6 +104,10 @@
 		313882122674AD3F00CCE393 /* PurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButton.swift; sourceTree = "<group>"; };
 		313882142674AE7B00CCE393 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		313882162675903700CCE393 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
+		313882192675AA9500CCE393 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3138821B2675AACB00CCE393 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		313882222675F82700CCE393 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		313882242675F82700CCE393 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		3152F634256404E200615A9D /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		3152F637256405A200615A9D /* AwardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsView.swift; sourceTree = "<group>"; };
 		3157CD01257CA8A800E5421E /* Color-Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Additions.swift"; sourceTree = "<group>"; };
@@ -184,6 +203,8 @@
 				31306ED225A84F750093FCFA /* Localization */,
 				31306EDA25A8505E0093FCFA /* Configuration */,
 				31054278254272F9008652CB /* UltimatePortfolioAppApp.swift */,
+				313882192675AA9500CCE393 /* AppDelegate.swift */,
+				3138821B2675AACB00CCE393 /* SceneDelegate.swift */,
 				3105428C254282C4008652CB /* DataController.swift */,
 				3105427C254272FB008652CB /* Assets.xcassets */,
 				318A928C254C118D0054FDD7 /* Colors.xcassets */,
@@ -303,6 +324,8 @@
 			isa = PBXGroup;
 			children = (
 				316CA4462542BA3100C7AE62 /* CloudKit.framework */,
+				313882222675F82700CCE393 /* WidgetKit.framework */,
+				313882242675F82700CCE393 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -343,6 +366,7 @@
 				31054272254272F9008652CB /* Frameworks */,
 				31054273254272F9008652CB /* Resources */,
 				3149BE442594F7BD0053C06F /* SwiftLint */,
+				313882352675F82B00CCE393 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -395,7 +419,7 @@
 		3105426D254272F9008652CB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					31054274254272F9008652CB = {
@@ -493,6 +517,8 @@
 				31ED5327258E553800969993 /* ProjectSummaryView.swift in Sources */,
 				313882172675903700CCE393 /* UnlockView.swift in Sources */,
 				318A928A254C08320054FDD7 /* ProjectHeaderView.swift in Sources */,
+				3138821A2675AA9500CCE393 /* AppDelegate.swift in Sources */,
+				3138821C2675AACB00CCE393 /* SceneDelegate.swift in Sources */,
 				3152F638256405A200615A9D /* AwardsView.swift in Sources */,
 				3105428A2542801C008652CB /* Main.xcdatamodeld in Sources */,
 				3138820E26749B8A00CCE393 /* UnlockManager.swift in Sources */,
@@ -711,6 +737,7 @@
 		31054285254272FB008652CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = UltimatePortfolioApp/Configuration/UltimatePortfolioApp.entitlements;
@@ -734,6 +761,7 @@
 		31054286254272FB008652CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = UltimatePortfolioApp/Configuration/UltimatePortfolioApp.entitlements;
