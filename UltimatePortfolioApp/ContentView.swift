@@ -43,6 +43,7 @@ struct ContentView: View {
                 }
         }
         .onContinueUserActivity(CSSearchableItemActionType, perform: moveToHome)
+        .onAppear(perform: dataController.appLaunched)
     }
 
     func moveToHome(_ input: Any) {

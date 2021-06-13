@@ -8,6 +8,7 @@
 import CoreData
 import CoreSpotlight
 import UserNotifications
+import StoreKit
 
 /// An environment singleton to manage our Core Data stack, including handling saving, counting fetch requests,
 /// tracking awards, and dealing with sample data.
@@ -257,6 +258,19 @@ class DataController: ObservableObject {
                     completion(false)
                 }
             }
+        }
+    }
+    
+    // swiftlint:disable:next line_length
+    /// Finding the first active scene (that's the one currently receiving the user input), then asking for a review prompt to appear there
+    func appLaunched() {
+        guard count(for: Project.fetchRequest()) >= 5 else { return }
+        
+        let allScenes = UIApplication.shared.connectedScenes
+        let scene = allScenes.first { $0.activationState == .foregroundActive }
+
+        if let windowScene = scene as? UIWindowScene {
+            SKStoreReviewController.requestReview(in: windowScene)
         }
     }
 }

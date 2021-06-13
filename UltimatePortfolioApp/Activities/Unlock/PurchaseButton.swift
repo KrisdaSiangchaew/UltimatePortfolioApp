@@ -10,7 +10,7 @@ import SwiftUI
 struct PurchaseButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .frame(minWidth: 200, minHeight: 400)
+            .frame(minWidth: 200, minHeight: 44)
             .background(Color("Light Blue"))
             .clipShape(Capsule())
             .foregroundColor(.white)
