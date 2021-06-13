@@ -7,7 +7,7 @@
 
 import CoreData
 import CoreSpotlight
-import UserNotifications
+import WidgetKit
 import StoreKit
 
 /// An environment singleton to manage our Core Data stack, including handling saving, counting fetch requests,
@@ -70,6 +70,12 @@ class DataController: ObservableObject {
 
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
+        } else {
+            let groupID = "group.com.krisdasiangchaew.UltimatePortfolioApp"
+            
+            if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupID) {
+                container.persistentStoreDescriptions.first?.url = url.appendingPathComponent("Main.sqlite")
+            }
         }
 
         container.loadPersistentStores { (_, error) in
@@ -125,6 +131,7 @@ class DataController: ObservableObject {
     func save() {
         if container.viewContext.hasChanges {
             try? container.viewContext.save()
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
 
@@ -134,25 +141,6 @@ class DataController: ObservableObject {
 
     func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {
         (try? container.viewContext.count(for: fetchRequest)) ?? 0
-    }
-
-    func hasEarned(award: Award) -> Bool {
-        switch award.criterion {
-        case "items":
-            let fetchRequest: NSFetchRequest<Item> = NSFetchRequest(entityName: "Item")
-            let awardCount = count(for: fetchRequest)
-            return awardCount >= award.value
-
-        case "complete":
-            let fetchRequest: NSFetchRequest<Item> = NSFetchRequest(entityName: "Item")
-            fetchRequest.predicate = NSPredicate(format: "completed = true")
-            let awardCount = count(for: fetchRequest)
-            return awardCount >= award.value
-
-        default:
-            // fatalError("Unknown award criterion \(award.criterion).")
-            return false
-        }
     }
     
     // MARK: - CoreSpotlight
@@ -186,92 +174,18 @@ class DataController: ObservableObject {
 
         return try? container.viewContext.existingObject(with: id) as? Item
     }
-    
-    // MARK: - UserNotifications
-    
-    func addReminders(for project: Project, completion: @escaping (Bool) -> Void) {
-        // 1. Check our authorization status for local notification
-        // 2. If status is not determined - i.e. user made no choice - do something
-        // 3. If status is authorized, we call placeReminders immediately
-        // 4. If we're in any other authorization state, we'll consider it a failure
-        let center = UNUserNotificationCenter.current()
-        
-        center.getNotificationSettings { settings in
-            switch settings.authorizationStatus {
-            case .notDetermined:
-                self.requestNotification { success in
-                    if success {
-                        self.placeReminders(for: project, completion: completion)
-                    } else {
-                        DispatchQueue.main.async {
-                            completion(false)
-                        }
-                    }
-                }
-            case .authorized:
-                self.placeReminders(for: project, completion: completion)
-            default:
-                DispatchQueue.main.async {
-                    completion(false)
-                }
-            }
-        }
-    }
-    
-    func removeReminders(for project: Project) {
-        let id = project.objectID.uriRepresentation().absoluteString
-        
-        let center = UNUserNotificationCenter.current()
-        center.removePendingNotificationRequests(withIdentifiers: [id])
-    }
-    
-    private func requestNotification(completion: @escaping (Bool) -> Void) {
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { granted, _ in
-            completion(granted)
-        }
-    }
-    
-    private func placeReminders(for project: Project, completion: @escaping (Bool) -> Void) {
-        // Deciding the content of the notification
-        let content = UNMutableNotificationContent()
-        content.sound = .default
-        content.title = project.projectTitle
-        if let projectDetail = project.detail {
-            content.subtitle = projectDetail
-        }
-        
-        // Telling iOS when the notification should be shown
-        let components = Calendar.current.dateComponents([.hour, .minute], from: project.reminderTime ?? Date())
-        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-        
-        // Wrapping above two pieces of information along with a unique identifier
-        let id = project.objectID.uriRepresentation().absoluteString
-        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-    
-        // Sending it off to iOS to be shown while handling the response carefully
-        UNUserNotificationCenter.current().add(request) { error in
-            DispatchQueue.main.async {
-                if error == nil {
-                    completion(true)
-                } else {
-                    completion(false)
-                }
-            }
-        }
-    }
-    
+     
     // swiftlint:disable:next line_length
     /// Finding the first active scene (that's the one currently receiving the user input), then asking for a review prompt to appear there
     func appLaunched() {
         guard count(for: Project.fetchRequest()) >= 5 else { return }
         
-        let allScenes = UIApplication.shared.connectedScenes
-        let scene = allScenes.first { $0.activationState == .foregroundActive }
-
-        if let windowScene = scene as? UIWindowScene {
-            SKStoreReviewController.requestReview(in: windowScene)
-        }
+//        let allScenes = UIApplication.shared.connectedScenes
+//        let scene = allScenes.first { $0.activationState == .foregroundActive }
+//
+//        if let windowScene = scene as? UIWindowScene {
+//            SKStoreReviewController.requestReview(in: windowScene)
+//        }
     }
     
     @discardableResult
