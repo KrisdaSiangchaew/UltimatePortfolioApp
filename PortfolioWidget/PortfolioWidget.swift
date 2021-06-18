@@ -68,8 +68,8 @@ struct PortfolioWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             PortfolioWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Up next...")
+        .description("Your #1 top-priority item.")
         .supportedFamilies([.systemSmall])
     }
 }
