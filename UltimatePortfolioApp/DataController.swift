@@ -202,4 +202,24 @@ class DataController: ObservableObject {
             return false
         }
     }
+    
+    func fetchRequestForTopItems(count: Int) -> NSFetchRequest<Item> {
+        let itemRequest: NSFetchRequest<Item> = Item.fetchRequest()
+        itemRequest.sortDescriptors = [
+            NSSortDescriptor(keyPath: \Item.priority, ascending: false)
+        ]
+        
+        let completedPredicate = NSPredicate(format: "completed = false")
+        let openPredicate = NSPredicate(format: "project.closed = false")
+        let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [completedPredicate, openPredicate])
+        itemRequest.predicate = compoundPredicate
+        
+        itemRequest.fetchLimit = count
+        
+        return itemRequest
+    }
+    
+    func results<T: NSManagedObject>(for fetchRequest: NSFetchRequest<T>) -> [T] {
+        return (try? container.viewContext.fetch(fetchRequest)) ?? []
+    }
 }

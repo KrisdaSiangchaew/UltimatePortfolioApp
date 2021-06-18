@@ -28,7 +28,6 @@
 		313882592675FCF800CCE393 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 313882242675F82700CCE393 /* SwiftUI.framework */; };
 		3138825F2675FCFD00CCE393 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3138825E2675FCFD00CCE393 /* Assets.xcassets */; };
 		313882652675FCFD00CCE393 /* PortfolioWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 313882572675FCF800CCE393 /* PortfolioWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		3138826B2675FD2B00CCE393 /* PortfolioWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 313882692675FD2B00CCE393 /* PortfolioWidget.intentdefinition */; };
 		3138826C2675FD2B00CCE393 /* PortfolioWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3138826A2675FD2B00CCE393 /* PortfolioWidget.swift */; };
 		3138826D2675FD4700CCE393 /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 310542882542801C008652CB /* Main.xcdatamodeld */; };
 		3138826E2675FE4100CCE393 /* Item-CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317C84DC2546F9A600FC118F /* Item-CoreDataHelpers.swift */; };
@@ -130,7 +129,6 @@
 		313882572675FCF800CCE393 /* PortfolioWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PortfolioWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3138825E2675FCFD00CCE393 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		313882602675FCFD00CCE393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		313882692675FD2B00CCE393 /* PortfolioWidget.intentdefinition */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.intentdefinition; path = PortfolioWidget.intentdefinition; sourceTree = "<group>"; };
 		3138826A2675FD2B00CCE393 /* PortfolioWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioWidget.swift; sourceTree = "<group>"; };
 		313882702675FED400CCE393 /* DataController-Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-Reminder.swift"; sourceTree = "<group>"; };
 		313882722675FF3B00CCE393 /* DataController-Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-Award.swift"; sourceTree = "<group>"; };
@@ -214,9 +212,9 @@
 			children = (
 				313882742676027D00CCE393 /* PortfolioWidgetExtension.entitlements */,
 				31054277254272F9008652CB /* UltimatePortfolioApp */,
+				3138825A2675FCF800CCE393 /* PortfolioWidget */,
 				31B7336125C2FDCF0003868A /* UltimatePortfolioAppTests */,
 				31E8E0A226059B2F00D7AE1F /* UltimatePortfolioAppUITests */,
-				3138825A2675FCF800CCE393 /* PortfolioWidget */,
 				31054276254272F9008652CB /* Products */,
 				316CA4452542BA3100C7AE62 /* Frameworks */,
 			);
@@ -364,7 +362,6 @@
 		3138825A2675FCF800CCE393 /* PortfolioWidget */ = {
 			isa = PBXGroup;
 			children = (
-				313882692675FD2B00CCE393 /* PortfolioWidget.intentdefinition */,
 				3138826A2675FD2B00CCE393 /* PortfolioWidget.swift */,
 				3138825E2675FCFD00CCE393 /* Assets.xcassets */,
 				313882602675FCFD00CCE393 /* Info.plist */,
@@ -636,7 +633,6 @@
 			files = (
 				3138826F2675FE7C00CCE393 /* DataController.swift in Sources */,
 				3138826D2675FD4700CCE393 /* Main.xcdatamodeld in Sources */,
-				3138826B2675FD2B00CCE393 /* PortfolioWidget.intentdefinition in Sources */,
 				3138826C2675FD2B00CCE393 /* PortfolioWidget.swift in Sources */,
 				3138826E2675FE4100CCE393 /* Item-CoreDataHelpers.swift in Sources */,
 			);

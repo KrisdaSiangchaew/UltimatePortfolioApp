@@ -33,13 +33,7 @@ extension HomeView {
                 cacheName: nil
             )
 
-            let itemRequest: NSFetchRequest<Item> = Item.fetchRequest()
-            itemRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Item.priority, ascending: false)]
-            let completedPredicate = NSPredicate(format: "completed = false")
-            let openPredicate = NSPredicate(format: "project.closed = false")
-            let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [completedPredicate, openPredicate])
-            itemRequest.predicate = compoundPredicate
-            itemRequest.fetchLimit = 10
+            let itemRequest = dataController.fetchRequestForTopItems(count: 10)
 
             itemsController = NSFetchedResultsController(
                 fetchRequest: itemRequest,
