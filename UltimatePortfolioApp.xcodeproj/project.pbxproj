@@ -58,6 +58,7 @@
 		31D4AEF1267D9AD0001604F3 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4AEF0267D9AD0001604F3 /* DataProvider.swift */; };
 		31D4AEF3267D9B80001604F3 /* SimpleWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4AEF2267D9B80001604F3 /* SimpleWidget.swift */; };
 		31D4AEF5267D9BCB001604F3 /* ComplexWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4AEF4267D9BCB001604F3 /* ComplexWidget.swift */; };
+		31D4AEF7267D9D2F001604F3 /* DataController-StoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4AEF6267D9D2E001604F3 /* DataController-StoreKit.swift */; };
 		31E6AD6D25601ABC00BCC524 /* Bundle-Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6AD6C25601ABC00BCC524 /* Bundle-Decode.swift */; };
 		31E8E09A2605967B00D7AE1F /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8E0992605967B00D7AE1F /* PerformanceTests.swift */; };
 		31E8E0A426059B2F00D7AE1F /* UltimatePortfolioAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8E0A326059B2F00D7AE1F /* UltimatePortfolioAppUITests.swift */; };
@@ -166,6 +167,7 @@
 		31D4AEF0267D9AD0001604F3 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		31D4AEF2267D9B80001604F3 /* SimpleWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleWidget.swift; sourceTree = "<group>"; };
 		31D4AEF4267D9BCB001604F3 /* ComplexWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexWidget.swift; sourceTree = "<group>"; };
+		31D4AEF6267D9D2E001604F3 /* DataController-StoreKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-StoreKit.swift"; sourceTree = "<group>"; };
 		31E6AD6C25601ABC00BCC524 /* Bundle-Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decode.swift"; sourceTree = "<group>"; };
 		31E8E0992605967B00D7AE1F /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		31E8E0A126059B2F00D7AE1F /* UltimatePortfolioAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UltimatePortfolioAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -250,6 +252,7 @@
 				313882192675AA9500CCE393 /* AppDelegate.swift */,
 				3138821B2675AACB00CCE393 /* SceneDelegate.swift */,
 				3105428C254282C4008652CB /* DataController.swift */,
+				31D4AEF6267D9D2E001604F3 /* DataController-StoreKit.swift */,
 				313882702675FED400CCE393 /* DataController-Reminder.swift */,
 				313882722675FF3B00CCE393 /* DataController-Award.swift */,
 				3105427C254272FB008652CB /* Assets.xcassets */,
@@ -611,6 +614,7 @@
 				3152F638256405A200615A9D /* AwardsView.swift in Sources */,
 				3105428A2542801C008652CB /* Main.xcdatamodeld in Sources */,
 				3138820E26749B8A00CCE393 /* UnlockManager.swift in Sources */,
+				31D4AEF7267D9D2F001604F3 /* DataController-StoreKit.swift in Sources */,
 				31E8E0B42605F2FA00D7AE1F /* HomeViewModel.swift in Sources */,
 				317C84E12546FA7100FC118F /* Project-CoreDataHelpers.swift in Sources */,
 				3157CD02257CA8A800E5421E /* Color-Additions.swift in Sources */,
