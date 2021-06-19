@@ -15,6 +15,7 @@
 		3105427D254272FB008652CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3105427C254272FB008652CB /* Assets.xcassets */; };
 		3105428A2542801C008652CB /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 310542882542801C008652CB /* Main.xcdatamodeld */; };
 		3105428D254282C4008652CB /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105428C254282C4008652CB /* DataController.swift */; };
+		31187B7A267CA58E002EDF6C /* Project-CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317C84E02546FA7100FC118F /* Project-CoreDataHelpers.swift */; };
 		3122D0DF25DE299000F5AD72 /* ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122D0DE25DE299000F5AD72 /* ExtensionTests.swift */; };
 		3122D0EA25DE5C6500F5AD72 /* DecodableString.json in Resources */ = {isa = PBXBuildFile; fileRef = 3122D0E925DE5C6500F5AD72 /* DecodableString.json */; };
 		3138820E26749B8A00CCE393 /* UnlockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3138820D26749B8A00CCE393 /* UnlockManager.swift */; };
@@ -54,6 +55,9 @@
 		31B7337925C311020003868A /* DevelopmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B7337825C311020003868A /* DevelopmentTests.swift */; };
 		31C72F0B25431CDC00C5784B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C72F0A25431CDC00C5784B /* HomeView.swift */; };
 		31C72F0E25431FC700C5784B /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C72F0D25431FC700C5784B /* ProjectsView.swift */; };
+		31D4AEF1267D9AD0001604F3 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4AEF0267D9AD0001604F3 /* DataProvider.swift */; };
+		31D4AEF3267D9B80001604F3 /* SimpleWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4AEF2267D9B80001604F3 /* SimpleWidget.swift */; };
+		31D4AEF5267D9BCB001604F3 /* ComplexWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4AEF4267D9BCB001604F3 /* ComplexWidget.swift */; };
 		31E6AD6D25601ABC00BCC524 /* Bundle-Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E6AD6C25601ABC00BCC524 /* Bundle-Decode.swift */; };
 		31E8E09A2605967B00D7AE1F /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8E0992605967B00D7AE1F /* PerformanceTests.swift */; };
 		31E8E0A426059B2F00D7AE1F /* UltimatePortfolioAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8E0A326059B2F00D7AE1F /* UltimatePortfolioAppUITests.swift */; };
@@ -159,6 +163,9 @@
 		31B7337825C311020003868A /* DevelopmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentTests.swift; sourceTree = "<group>"; };
 		31C72F0A25431CDC00C5784B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		31C72F0D25431FC700C5784B /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
+		31D4AEF0267D9AD0001604F3 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		31D4AEF2267D9B80001604F3 /* SimpleWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleWidget.swift; sourceTree = "<group>"; };
+		31D4AEF4267D9BCB001604F3 /* ComplexWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexWidget.swift; sourceTree = "<group>"; };
 		31E6AD6C25601ABC00BCC524 /* Bundle-Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decode.swift"; sourceTree = "<group>"; };
 		31E8E0992605967B00D7AE1F /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		31E8E0A126059B2F00D7AE1F /* UltimatePortfolioAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UltimatePortfolioAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -363,6 +370,9 @@
 			isa = PBXGroup;
 			children = (
 				3138826A2675FD2B00CCE393 /* PortfolioWidget.swift */,
+				31D4AEF0267D9AD0001604F3 /* DataProvider.swift */,
+				31D4AEF2267D9B80001604F3 /* SimpleWidget.swift */,
+				31D4AEF4267D9BCB001604F3 /* ComplexWidget.swift */,
 				3138825E2675FCFD00CCE393 /* Assets.xcassets */,
 				313882602675FCFD00CCE393 /* Info.plist */,
 			);
@@ -631,10 +641,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31D4AEF1267D9AD0001604F3 /* DataProvider.swift in Sources */,
 				3138826F2675FE7C00CCE393 /* DataController.swift in Sources */,
+				31D4AEF5267D9BCB001604F3 /* ComplexWidget.swift in Sources */,
 				3138826D2675FD4700CCE393 /* Main.xcdatamodeld in Sources */,
 				3138826C2675FD2B00CCE393 /* PortfolioWidget.swift in Sources */,
+				31D4AEF3267D9B80001604F3 /* SimpleWidget.swift in Sources */,
 				3138826E2675FE4100CCE393 /* Item-CoreDataHelpers.swift in Sources */,
+				31187B7A267CA58E002EDF6C /* Project-CoreDataHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
