@@ -118,12 +118,10 @@ class DataController: ObservableObject {
 
     func deleteAll() {
         let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = Item.fetchRequest()
-        let batchDeleteFetchRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)
-        _ = try? container.viewContext.execute(batchDeleteFetchRequest1)
+        delete(fetchRequest1)
 
         let fetchRequest2: NSFetchRequest<NSFetchRequestResult> = Project.fetchRequest()
-        let batchDeleteFetchRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
-        _ = try? container.viewContext.execute(batchDeleteFetchRequest2)
+        delete(fetchRequest2)
     }
 
     /// Saves our Core Data context iff there are changes. This silently ignores
@@ -138,6 +136,16 @@ class DataController: ObservableObject {
 
     func delete(_ object: NSManagedObject) {
         container.viewContext.delete(object)
+    }
+    
+    private func delete(_ fetchRequest: NSFetchRequest<NSFetchRequestResult>) {
+        let batchDeleteFetchRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        batchDeleteFetchRequest.resultType = .resultTypeObjectIDs
+        
+        if let delete = try? container.viewContext.execute(batchDeleteFetchRequest) as? NSBatchDeleteResult {
+            let changes = [NSDeletedObjectsKey: delete.result as? [NSManagedObjectID] ?? []]
+            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [container.viewContext])
+        }
     }
 
     func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {
