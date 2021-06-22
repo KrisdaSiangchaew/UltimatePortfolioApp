@@ -17,6 +17,9 @@ extension HomeView {
         @Published var items = [Item]()
         @Published var selectedItem: Item?
 
+        @Published var upNext = ArraySlice<Item>()
+        @Published var moreToExplore = ArraySlice<Item>()
+
         var dataController: DataController
 
         init(dataController: DataController) {
@@ -52,6 +55,8 @@ extension HomeView {
                 try itemsController.performFetch()
                 projects = projectsController.fetchedObjects ?? []
                 items = itemsController.fetchedObjects ?? []
+                upNext = items.prefix(3)
+                moreToExplore = items.dropFirst(3)
             } catch {
                 print("Failed to fetch initial data")
             }
@@ -62,15 +67,9 @@ extension HomeView {
                 projects = newProjects
             } else if let newItems = controller.fetchedObjects as? [Item] {
                 items = newItems
+                upNext = items.prefix(3)
+                moreToExplore = items.dropFirst(3)
             }
-        }
-
-        var upNext: ArraySlice<Item> {
-            items.prefix(3)
-        }
-
-        var moreToExplore: ArraySlice<Item> {
-            items.dropFirst(3)
         }
 
         func addSampleData() {
