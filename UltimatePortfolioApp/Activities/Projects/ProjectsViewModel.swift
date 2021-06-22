@@ -53,6 +53,7 @@ extension ProjectsView {
             let item = Item(context: dataController.container.viewContext)
             item.project = project
             item.creationDate = Date()
+            item.completed = false
             dataController.save()
         }
 
