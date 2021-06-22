@@ -64,12 +64,10 @@ extension HomeView {
 
         func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
             if let newProjects = controller.fetchedObjects as? [Project] {
-                print("PROJECT CHANGE")
                 projects = newProjects
             }
             
             if let newItems = controller.fetchedObjects as? [Item] {
-                print("ITEM CHANGE")
                 items = newItems
                 upNext = items.prefix(3)
                 moreToExplore = items.dropFirst(3)
